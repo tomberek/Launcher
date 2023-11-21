@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div class="hero-container">
+    <h1 class="hero-title">TeaClient</h1>
+    <p class="hero-subtitle">A Minecraft Utility Mod</p>
+    <div class="hero-image">
+    <Image src="/Tea_client_banner.png" width="441" height="248" alt="TeaClient Logo" loading="lazy" id="logo"></Image>
+    <h1 class="hero-title">TeaClient</h1>
+    <p class="hero-subtitle">A Minecraft Utility Mod</p>
+    <div class="hero-image">
+    <Image src="/Tea_client_banner.png" width="441" height="248" alt="TeaClient Logo" loading="lazy" id="logo"></Image>
+    <div class="hero-content">
+    </div>
+</div>
+</div>
+
+<style>
+
+    h1, p {
+        color: white;
+    }
+
+    img {
+        border-radius: 10px;
+        border: 1px solid rgba(40,40,40, 1);
+    }
+
+    .hero-container {
+        position: absolute;
+        top: 64px;
+        left: 128px;
+    }
