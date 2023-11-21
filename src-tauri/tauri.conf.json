@@ -1,9 +1,10 @@
 {
   "build": {
-    "beforeBuildCommand": "pnpm build",
-    "beforeDevCommand": "pnpm dev",
-    "devPath": "http://localhost:3000",
-    "distDir": "../dist"
+    "beforeBuildCommand": "bun run build",
+    "beforeDevCommand": "bun run dev",
+    "devPath": "http://localhost:4322",
+    "distDir": "../dist",
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "tauri-astro",
@@ -11,8 +12,15 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
-    },
+      "all": true,
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": [
+            "https://api.mojang.com/users/profiles/minecraft/*"
+        ]
+    }
+  },
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
@@ -28,7 +36,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "net.teaclient.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -61,7 +69,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Tauri + Astro",
+        "title": "Teaclient",
         "width": 800
       }
     ]
