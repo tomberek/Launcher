@@ -2,7 +2,7 @@
   "build": {
     "beforeBuildCommand": "bun run build",
     "beforeDevCommand": "bun run dev",
-    "devPath": "http://localhost:4322",
+    "devPath": "http://localhost:4321",
     "distDir": "../dist",
     "withGlobalTauri": true
   },
@@ -19,6 +19,17 @@
         "scope": [
             "https://api.mojang.com/users/profiles/minecraft/*"
         ]
+    },
+    "window": {
+      "all": false,
+      "close": true,
+      "hide": true,
+      "show": true,
+      "maximize": true,
+      "minimize": true,
+      "unmaximize": true,
+      "unminimize": true,
+      "startDragging": true
     }
   },
     "bundle": {
@@ -70,7 +81,9 @@
         "height": 600,
         "resizable": true,
         "title": "Teaclient",
-        "width": 800
+        "width": 800,
+        "decorations": false,
+        "transparent": true
       }
     ]
   }
