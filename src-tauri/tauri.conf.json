@@ -11,6 +11,7 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "macOSPrivateApi": true,
     "allowlist": {
       "all": true,
       "http": {
@@ -78,10 +79,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 1200,
+        "minWidth": 1200,
+        "minHeight": 700,
         "resizable": true,
         "title": "Teaclient",
-        "width": 800,
+        "width": 1000,
         "decorations": false,
         "transparent": true
       }
