@@ -41,19 +41,34 @@
     height: 30px;
   }
   .titlebar-button:hover {
-    background: #5bbec3;
+    background:  rgba(53, 34, 68, 1);
   }
+
+  .titlebar-button:last-child {
+    border-radius: 0px 10px 0px 0px;
+  }
+
+.titlebar-button:last-child:hover {
+  background-color: rgba(255, 0, 0, 0.541);
+}
+
 </style>
 
 <script>
   import { appWindow } from "@tauri-apps/api/window";
-  document
-    .getElementById("titlebar-minimize")
-    .addEventListener("click", () => appWindow.minimize());
-  document
-    .getElementById("titlebar-maximize")
-    .addEventListener("click", () => appWindow.toggleMaximize());
-  document
-    .getElementById("titlebar-close")
-    .addEventListener("click", () => appWindow.close());
+
+  let minimizeButton = document.getElementById("titlebar-minimize");
+  if (minimizeButton) {
+    minimizeButton.addEventListener("click", () => appWindow.minimize());
+  }
+
+  let maximizeButton = document.getElementById("titlebar-maximize");
+  if (maximizeButton) {
+    maximizeButton.addEventListener("click", () => appWindow.toggleMaximize());
+  }
+
+  let closeButton = document.getElementById("titlebar-close");
+  if (closeButton) {
+    closeButton.addEventListener("click", () => appWindow.close());
+  }
 </script>
