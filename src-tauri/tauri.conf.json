@@ -17,22 +17,20 @@
       "http": {
         "all": true,
         "request": true,
-        "scope": [
-            "https://api.mojang.com/users/profiles/minecraft/*"
-        ]
+        "scope": ["https://api.mojang.com/users/profiles/minecraft/*"]
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
+      }
     },
-    "window": {
-      "all": false,
-      "close": true,
-      "hide": true,
-      "show": true,
-      "maximize": true,
-      "minimize": true,
-      "unmaximize": true,
-      "unminimize": true,
-      "startDragging": true
-    }
-  },
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
@@ -79,12 +77,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 1200,
-        "minWidth": 1200,
-        "minHeight": 700,
+        "width": 1715,
+        "height": 1085,
+        "minWidth": 1715,
+        "minHeight": 1085,
         "resizable": true,
         "title": "Teaclient",
-        "width": 1000,
         "decorations": false,
         "transparent": true
       }

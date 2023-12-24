@@ -2,14 +2,13 @@
 import Titlebar from "../components/titlebar.astro";
 import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
-import Hero from "../components/hero.astro";
 ---
 
 <Titlebar />
 <Topbar />
 <Sidebar />
 <main>
-  <Hero />
+  <!-- Todo: Mods page supports modrintn/curseforge api -->
 </main>
 
 <style>
@@ -33,10 +32,11 @@ import Hero from "../components/hero.astro";
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow: hidden;
   }
 
   body {
-    height: 100%;
+    height: 100vh;
   }
 
   .logo.tauri:hover {
@@ -45,10 +45,6 @@ import Hero from "../components/hero.astro";
 
   .logo.astro:hover {
     filter: drop-shadow(0 0 2em rgb(184, 81, 34));
-  }
-
-  #greet-input {
-    margin-right: 5px;
   }
 
   @media (prefers-color-scheme: dark) {

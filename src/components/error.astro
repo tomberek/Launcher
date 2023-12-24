@@ -1,0 +1,44 @@
+---
+import hljs from 'highlight.js';
+import 'highlight.js/styles/default.css';
+let { message } = Astro.props
+---
+<div class="background">
+<div class="popup">
+    <pre><code class="language-bash">{hljs.highlightAuto(message).value}</code></pre>
+</div>
+</div>
+
+
+
+
+
+<style>
+    .background{ 
+        color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        width: 100vh;
+        height: 100vh;
+    }
+
+.popup {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 20rem;
+}
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+

@@ -7,6 +7,14 @@ pub use mobile::*;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 
+mod auth;
+
+use auth::auth as authRS;
+
+#[tauri::command]
+async fn auth() -> Result<(), String> {
+    authRS().await.map_err(|e| e.to_string())
+}
 
 pub type SetupHook = Box<dyn FnOnce(&mut App) -> Result<(), Box<dyn std::error::Error>> + Send>;
 
@@ -32,6 +40,7 @@ impl AppBuilder {
     pub fn run(self) {
         let setup = self.setup;
         tauri::Builder::default()
+            .invoke_handler(tauri::generate_handler![auth])
             .setup(move |app| {
                 if let Some(setup) = setup {
                     (setup)(app)?;

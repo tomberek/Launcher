@@ -1,50 +1,101 @@
 ---
 import { Image } from "astro:assets";
+import { version } from "../../package.json";
 ---
 
-    <section class="side-nav">
-    <ul class="menu">
-                <li><a href="/socials"><Image src="/cosmetics.png" width="32" height="32" alt="cosmetic icon"></Image></a></li>
-                <li><a href="/socials"><Image src="/cosmetics.png" width="32" height="32" alt="cosmetic icon"></Image></a></li>
-                <li><a href="/socials"><Image src="/cosmetics.png" width="32" height="32" alt="cosmetic icon"></Image></a></li>
-                <li><a href="/socials"><Image src="/cosmetics.png" width="32" height="32" alt="cosmetic icon"></Image></a></li>
-                <li><a href="/socials"><Image src="/cosmetics.png" width="32" height="32" alt="cosmetic icon"></Image></a></li>
-    </ul>
-  </section>
+<section class="side-nav">
+  <ul class="menu">
+    <li>
+      <div class="selected-box"></div><a href="/"
+        ><Image
+          src="/cosmetics.png"
+          width="32"
+          height="32"
+          alt="cosmetic icon"
+        /></a
+      >
+    </li>
+    <li>
+      <div class="selected-box"></div><a href="/servers"
+        ><Image
+          src="/cosmetics.png"
+          width="32"
+          height="32"
+          alt="cosmetic icon"
+        /></a
+      >
+    </li>
+    <li>
+      <div class="selected-box"></div><a href="/mods"
+        ><Image
+          src="/cosmetics.png"
+          width="32"
+          height="32"
+          alt="cosmetic icon"
+        /></a
+      >
+    </li>
+    <li>
+      <div class="selected-box"></div><a href="/customize"
+        ><Image
+          src="/cosmetics.png"
+          width="32"
+          height="32"
+          alt="cosmetic icon"
+        /></a
+      >
+    </li>
+    <li>
+      <div class="selected-box"></div><a href="/settings"
+        ><Image
+          src="/cosmetics.png"
+          width="32"
+          height="32"
+          alt="cosmetic icon"
+        /></a
+      >
+    </li>
+  </ul>
+  <div class="version" id="version">v{version}</div>
+</section>
 
-        
 <style>
-.side-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  color: #FFF;
-  height: calc(100vh - 121px - 64px);
-  width: 64px;
-  padding: 0.7rem;
-  position: relative;
-}
-
-ul {
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
     height: calc(100vh - 121px - 64px);
-}
-.menu {
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+    width: 64px;
+    padding: 0.7rem;
+    position: relative;
+  }
 
-.menu > li {
-  margin: 0 1rem;
-}
+  ul {
+    height: calc(100vh - 121px - 64px);
+  }
 
-.menu > li:last-child {
-  position: relative;
-  margin-top: auto;
+  .menu {
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu > li {
+    margin: 0 1rem;
+  }
+
+  .menu > li:last-child {
+    position: relative;
+    margin-top: auto;
+  }
+
+  .menu > li > a:focus {
+    background-color: rgb(61, 61, 61); /* Change the color as needed */
   }
 
   li {
@@ -54,23 +105,52 @@ ul {
     position: relative;
   }
 
-    a {
-      color: var(--navBar-Items);
+  a {
+    color: var(--navBar-Items);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    &:hover {
+      color: var(--hover-color);
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
-
-      &:hover {
-        color: var(--hover-color);
-        text-decoration: none;
-        font-weight: bold;
-      }
     }
+  }
 
-    .logo-section {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: left;
-    }
+  .logo-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .selected {
+    display: block;
+    width: 10px;
+    height: 48px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: -21px;
+  }
+
+  .version {
+    padding-top: 10%;
+    font-size: 0.8rem;
+    color: grey;
+  }
 </style>
+
+<script>
+  window.onload = function () {
+    const links = document.querySelectorAll(".menu a");
+    links.forEach((link) => {
+      if ((link as HTMLAnchorElement).href === window.location.href) {
+        const box = link.previousElementSibling;
+        if (box) {
+          box.classList.add("selected");
+        }
+      }
+    });
+  };
+</script>
