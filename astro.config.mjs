@@ -1,15 +1,15 @@
 import { defineConfig } from 'astro/config';
-import svelte from '@astrojs/svelte';
 
-import react from "@astrojs/react";
+import sentry from "@sentry/astro";
+import spotlightjs from "@spotlightjs/astro";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), react()],
+  integrations: [sentry(), spotlightjs()],
   vite: {
     server: {
       watch: {
-        ignored: ['**/target/**']
+        ignored: ['**/target/**', '**/src-tauri/**']
       }
     }
   }
