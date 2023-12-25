@@ -1,9 +1,11 @@
 {
 	"extends": ["config:base"],
+	"commitMessage": "{{semanticCommitType}}({{depName}}): update to version {{newVersion}}",
 	"packageRules": [
-		{
-			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-			"automerge": true
-		}
+	  {
+		"matchPaths": ["package.json"],
+		"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+		"automerge": true
+	  }
 	]
-}
+  }
