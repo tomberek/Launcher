@@ -8,7 +8,6 @@ pub use mobile::*;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 
 mod auth;
-
 use auth::auth as authRS;
 
 #[tauri::command]

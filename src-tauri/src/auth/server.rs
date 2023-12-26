@@ -32,13 +32,19 @@ fn handle_client(stream: TcpStream) -> std::io::Result<(String, String)> {
                 state = parts[1];
             }
         } else {
-            return Err(std::io::Error::new(std::io::ErrorKind::Other, "Invalid parameter format"));
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                "Invalid parameter format",
+            ));
         }
     }
     let response = if !code.is_empty() {
         format!("HTTP/1.1 200 OK\r\n\r\n{{\"access_token\": \"{}\"}}", code)
     } else {
-        return Err(std::io::Error::new(std::io::ErrorKind::Other, "Code is empty"));
+        return Err(std::io::Error::new(
+            std::io::ErrorKind::Other,
+            "Code is empty",
+        ));
     };
 
     writer.write(response.as_bytes())?;
@@ -61,7 +67,7 @@ pub fn start_server() -> std::io::Result<(String, String)> {
                 Ok((access_token, state)) => {
                     tx.send((access_token, state)).unwrap();
                     Ok(())
-                },
+                }
                 Err(e) => {
                     println!("Error handling client: {}", e);
                     let response = "HTTP/1.1 500 Internal Server Error\r\n\r\n";

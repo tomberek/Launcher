@@ -5,10 +5,9 @@ mod desktop;
 mod mobile;
 
 fn main() {
-  #[cfg(desktop)]
-  desktop::main();
+    #[cfg(desktop)]
+    desktop::main();
 
-
-  #[cfg(mobile)]
-  mobile::main();
+    #[cfg(mobile)]
+    mobile::main();
 }
