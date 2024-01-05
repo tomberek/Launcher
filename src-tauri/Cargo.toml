@@ -16,10 +16,12 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "1.4", features = [] }
 
 [dependencies]
-serde_json = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.4", features = [ "macos-private-api", "api-all"] }
-reqwest = "0.11.23"
+serde_json = "*"
+serde = "1.0.194"
+tauri = { version = "*", features = [ "macos-private-api", "api-all"] }
+reqwest = "*"
+tokio = { version = "*", features = ["full"] }
+minecraft-auth = {git = "https://github.com/Eveeifyeve/minecraft-auth"}
 
 [features]
 # by default Tauri runs in production mode

@@ -1,5 +1,3 @@
-use std::error;
-
 use tauri::App;
 
 #[cfg(mobile)]
@@ -8,16 +6,6 @@ mod mobile;
 pub use mobile::*;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-
-mod auth;
-use auth::auth as authRS;
-
-#[tauri::command]
-fn auth() -> Result<(String, String), Box<dyn std::error::Error>> {
-   let (bearer_token, uuid) = authRS();
-   Ok((bearer_token, uuid))
-}
-
 
 pub type SetupHook = Box<dyn FnOnce(&mut App) -> Result<(), Box<dyn std::error::Error>> + Send>;
 
@@ -43,7 +31,7 @@ impl AppBuilder {
     pub fn run(self) {
         let setup = self.setup;
         tauri::Builder::default()
-            .invoke_handler(tauri::generate_handler![auth])
+            .invoke_handler(tauri::generate_handler![])
             .setup(move |app| {
                 if let Some(setup) = setup {
                     (setup)(app)?;
