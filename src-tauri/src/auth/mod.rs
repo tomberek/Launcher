@@ -10,15 +10,15 @@ use bearer_token::bearer_token;
 use xsts::xsts;
 
 
-pub async fn auth() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn auth() -> Result<(String, String), Box<dyn std::error::Error>> {
     let (access_token, _state) = start_server()?;
 
     let (userhash, xboxtoken) = xbox(&access_token).await?;
     print!("Userhash: {} Token: {}", userhash, xboxtoken);
     let xsts = xsts(&userhash).await?;
-    let bearer_token = bearer_token(&xsts, &userhash).await?;
+    let (bearer_token, uuid) = bearer_token(&xsts, &userhash).await?;
 
-    let output = bearer_token.clone();
 
-    Ok((output))
+
+    Ok((bearer_token, uuid))
 }

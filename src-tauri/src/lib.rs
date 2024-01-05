@@ -1,3 +1,5 @@
+use std::error;
+
 use tauri::App;
 
 #[cfg(mobile)]
@@ -11,9 +13,11 @@ mod auth;
 use auth::auth as authRS;
 
 #[tauri::command]
-async fn auth() -> Result<(), String> {
-    authRS().await.map_err(|e| e.to_string())
+fn auth() -> Result<(String, String), Box<dyn std::error::Error>> {
+   let (bearer_token, uuid) = authRS();
+   Ok((bearer_token, uuid))
 }
+
 
 pub type SetupHook = Box<dyn FnOnce(&mut App) -> Result<(), Box<dyn std::error::Error>> + Send>;
 
