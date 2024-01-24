@@ -1,10 +1,10 @@
 [package]
-name = "app"
+name = "teaclient"
 version = "0.1.0"
-description = "A Tauri App"
+description = "A OpenSourced Client That looks nice.."
 authors = ["you"]
-license = ""
-repository = ""
+license = "EPL-2.0"
+repository = "https://github.com/teaclientmc/launcher"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -19,14 +19,12 @@ tauri-build = { version = "1.4", features = [] }
 serde_json = "*"
 serde = "1.0.194"
 tauri = { version = "*", features = [ "macos-private-api", "api-all"] }
-reqwest = "*"
 tokio = { version = "*", features = ["full"] }
-minecraft-auth = {git = "https://github.com/Eveeifyeve/minecraft-auth"}
+minecraft-essentials = {git = "https://github.com/minecraft-essentials/minecraft-essentials"}
+dotenv = "0.15.0"
+keyring = "2.3.1"
+
 
 [features]
-# by default Tauri runs in production mode
-# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL
 default = [ "custom-protocol" ]
-# this feature is used for production builds where `devPath` points to the filesystem
-# DO NOT remove this
 custom-protocol = [ "tauri/custom-protocol" ]

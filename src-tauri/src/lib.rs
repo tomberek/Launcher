@@ -1,3 +1,5 @@
+use dotenv::dotenv;
+use std::env;
 use tauri::App;
 
 #[cfg(mobile)]
@@ -5,7 +7,35 @@ mod mobile;
 #[cfg(mobile)]
 pub use mobile::*;
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+#[tauri::command]
+async fn auth() {
+    dotenv().ok();
+
+    /* 
+    * All Credits go to Minecraft-Essentails.
+    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
+    */
+
+    let client_id = ""
+    let client_secret = env::var("Client_Secret").expect("Client_Secret Is Expected");
+    let ouath = minecraft_essentials::Oauth::new(&client_id);
+    print!("URL: {}", ouath.url());
+
+    // let ouath_info = ouath.launch(false).await?;
+}
+
+#[tauri::command]
+fn launch() {
+
+    /* 
+    * All Credits go to Minecraft-Essentails.
+    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
+    */
+
+    //TODO: Minecraft Launching Client.
+
+    // minecraft_essentials::minecraft::new()
+}
 
 pub type SetupHook = Box<dyn FnOnce(&mut App) -> Result<(), Box<dyn std::error::Error>> + Send>;
 
@@ -31,7 +61,7 @@ impl AppBuilder {
     pub fn run(self) {
         let setup = self.setup;
         tauri::Builder::default()
-            .invoke_handler(tauri::generate_handler![])
+            .invoke_handler(tauri::generate_handler![auth, launch])
             .setup(move |app| {
                 if let Some(setup) = setup {
                     (setup)(app)?;

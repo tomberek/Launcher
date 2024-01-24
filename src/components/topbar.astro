@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 ---
 
-    <section class="top-nav">
+    <section class="top-nav flex flex-row items-center justify-between h-[90px] p-[0.7rem] pt-[64px]">
       <div class="logo-section">
         <a href="/" title="Home page" aria-label="Home page">
           <Image src="/logo.webp" width="96" height="96" alt="teaclient logo" loading="lazy" id="logo"/>
@@ -12,10 +12,10 @@ import { Image } from "astro:assets";
             <!-- <a href="/"><img id="logo" src="/logo_white.svg"></a> -->
         </div>
     <input id="menu-toggle" type="checkbox" />
-    <label class='menu-button-container' for="menu-toggle">
+    <label class='menu-button-container hidden h-[100%] w-[30px] cursor-pointer justify-center items-center' for="menu-toggle">
     <div class='menu-button'></div>
   </label>
-    <ul class="menu">
+    <ul class="menu flex flex-row list-none m-0 p-0">
                 <li>
                     <a href="/socials">Button1</a>
                 </li>
@@ -23,44 +23,21 @@ import { Image } from "astro:assets";
                 <li><a href="/docs">Button2</a></li>
     </ul>
   </section>
-        </div>
+
 
         
 <style>
 .top-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   background: var(--nav-color);
   color: #FFF;
-  height: 90px;
-  padding: 0.7rem;
-  padding-top: 32px;
 }
 
-.menu {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
 .menu > li {
   margin: 0 1rem;
   overflow: hidden;
 }
 
-.menu-button-container {
-  display: none;
-  height: 100%;
-  width: 30px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 #menu-toggle {
   display: none;

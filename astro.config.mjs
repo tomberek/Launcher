@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [sentry(), spotlightjs(), tailwind()],
   vite: {
     server: {
+      port: 4321,
       watch: {
         ignored: ['**/target/**', '**/src-tauri/**']
       }

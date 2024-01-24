@@ -2,65 +2,29 @@
 import Titlebar from "../components/titlebar.astro";
 import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
+
 ---
-
-
 
 <Titlebar />
 <Topbar />
 <Sidebar />
-<main>
-
+<main class="m-auto flex flex-col justify-center text-center">
+ <!-- Todo:Page -->
 </main>
 
-
 <style>
-    main {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-
   html {
-    border-radius: 15px;
-    background: rgb(53, 34, 68);
+    @apply rounded-2xl bg-[#352244];
     background: linear-gradient(
       171deg,
       rgba(53, 34, 68, 1) 0%,
       rgba(17, 0, 30, 1) 100%
     );
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: hidden;
+    @apply bg-center bg-cover bg-no-repeat bg-fixed;
+    overflow-y: visible;
   }
-  
 
   body {
-    height: 100vh;
-  }
-
-  .logo.tauri:hover {
-    filter: drop-shadow(0 0 2em #24c8db);
-  }
-
-  .logo.astro:hover {
-    filter: drop-shadow(0 0 2em rgb(184, 81, 34));
-  }
-
-
-  @media (prefers-color-scheme: dark) {
-    .logo.light-mode-only {
-      display: none;
-    }
-  }
-
-  @media (prefers-color-scheme: light) {
-    .logo.dark-mode-only {
-      display: none;
-    }
+    height: 100%;
   }
 </style>

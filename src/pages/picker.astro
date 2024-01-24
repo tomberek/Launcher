@@ -1,0 +1,90 @@
+<div class="flex justify-center items-center h-screen">
+    <div class=" flex flex-col w-[450px] p-[25px] justify-center items-center bg-zinc-700 rounded-2xl shadow-xl shadow-indigo-700">
+        <div id="gradient-box" class="relative rounded-xl border border-zinc-400 w-full h-[200px]"></div>
+        <div class="flex items-start">
+            <select name="direction" class="mt-[15px] bg-zinc-700 text-white outline-none border border-zinc-300 rounded-md h-[50px]" id="direction">
+                <option value="to right">To Right</option>
+                <option value="to left">To Left</option>
+                <option value="to top">To Top</option>
+                <option value="to bottom">To Bottom</option>
+                <option value="to top right">To Top Right</option>
+                <option value="to top left" selected>To Top Left</option>
+                <option value="to bottom right">To Bottom Right</option>
+                <option value="to bottom left">To Bottom Left</option>
+            </select>
+        </div>
+        <span class="ml-[10px]">Colors</span>
+        <input id="colorpick1" type="color" />
+        <input id="colorpick2" type="color" />
+
+
+        <div class="mt-[30px] flex space-x-5">
+            <button class="bg-indigo-400 hover:bg-indigo-600 p-[25px] cursor-pointer text-center border-none text-white rounded-md mb-[-15px] button">Generate</button>
+            <button class="bg-red-400 hover:bg-red-600 p-[25px] cursor-pointer text-center border-none text-white rounded-md mb-[-15px] button">Reset</button>
+            <button class="bg-indigo-400 hover:bg-indigo-600 p-[25px] cursor-pointer text-center border-none text-white rounded-md mb-[-15px] button">Save</button>
+        </div>
+    </div>
+ </div>
+
+<style>
+    #gradient-box {
+        background: linear-gradient(
+            171deg,
+            rgba(53, 34, 68, 1) 0%,
+            rgba(17, 0, 30, 1) 100%
+        );
+    }
+
+
+    .button {
+        width: calc(100% / 2 - 5px);
+    }
+
+    #colorpick1,
+    #colorpick2 {
+        @apply h-10 bg-transparent;
+        width: calc(100% / 4 - 5px);
+    }
+</style>
+
+<script>
+    const gradientBox = document.getElementById(
+        "gradient-box",
+    ) as HTMLDivElement;
+    const direction = document.getElementById("direction") as HTMLSelectElement;
+    if (gradientBox && direction) {
+        const value = direction.value;
+    }
+
+    // const gradientBox = document.getElementById("gradient-box");
+    // const selectMenu = document.getElementById("select-menu");
+    // const colorInputs = document.querySelectorAll(".colors input");
+    // const textarea = document.querySelector("textarea");
+    // const refreshBtn = document.getElementById("refresh");
+
+    // const getRandomColor = () => {
+    //     // Generating a random color in hexadecimal format. Example: #5665E9
+    //     const randomHex = Math.floor(Math.random() * 0xffffff).toString(16);
+    //     return `#${randomHex}`;
+    // };
+
+    // const generateGradient = (isRandom) => {
+    //     if (isRandom) {
+    //         // If isRandom is true, update the colors inputs value with random color
+    //         colorInputs[0].value = getRandomColor();
+    //         colorInputs[1].value = getRandomColor();
+    //     }
+    //     // Creating a gradient string using the select menu value with color input values
+    //     const gradient = `linear-gradient(${selectMenu.value}, ${colorInputs[0].value}, ${colorInputs[1].value})`;
+    //     gradientBox.style.background = gradient;
+    //     textarea.value = `background: ${gradient};`;
+    // };
+
+    // colorInputs.forEach((input) => {
+    //     // Calling generateGradient function on each color input clicks
+    //     input.addEventListener("input", () => generateGradient(false));
+    // });
+
+    // selectMenu.addEventListener("change", () => generateGradient(false));
+    // refreshBtn.addEventListener("click", () => generateGradient(true));
+</script>
