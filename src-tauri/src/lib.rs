@@ -16,7 +16,7 @@ async fn auth() {
     * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
     */
 
-    let client_id = ""
+    let client_id = "";
     let client_secret = env::var("Client_Secret").expect("Client_Secret Is Expected");
     let ouath = minecraft_essentials::Oauth::new(&client_id);
     print!("URL: {}", ouath.url());
