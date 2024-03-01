@@ -14,8 +14,6 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
-    "@sentry/astro": "^7.91.0",
-    "@spotlightjs/astro": "^1.0.9",
     "@tauri-apps/api": "^1.5.3",
     "@tauri-apps/cli": "^1.5.9",
     "@tauri-apps/plugin-global-shortcut": "^2.0.0-alpha.5",
