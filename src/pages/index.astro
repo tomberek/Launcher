@@ -51,7 +51,8 @@ let minecrafts = [
             </div>
            
             <!-- News -->
-            <div class="flex flex-col w-full overflow-scroll space-y-5 flex-shrink">
+            <div class="flex overflow-auto h-screen">
+            <div class="flex flex-col w-full overflow-y-visible space-y-5 flex-shrink">
                  <NewsItem
                    class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
                    title="TeaClient Released"
@@ -73,10 +74,18 @@ let minecrafts = [
                desc="TeaClient has been officially released! ..."
                imgurl="/Tea_client_banner.png"
              />
+             <NewsItem
+             class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
+             title="TeaClient Released"
+             date="April 1st, 2024"
+             desc="TeaClient has been officially released! ..."
+             imgurl="/Tea_client_banner.png"
+           />
                  <!-- Additional NewsItems here -->
             </div>
         </div>
-      </div>
+    </div>
+</div>
 
       <!-- Version + Play -->
       <div
