@@ -1,19 +1,26 @@
 ---
-import Titlebar from "../components/titlebar.astro";
 import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
 import PlayItem from "../components/playitem.astro";
+import Launchbar from "../components/launchbar.astro";
+import Layout from "../layouts/Layout.astro";
 
 const servers = ["hypixel", "hypixel"];
 
+let minecrafts = [
+  { version: "1.20.1", modLoaders: ["Quilt", "Fabric", "Forge"] },
+  { version: "1.8.9", modLoaders: ["Forge"] },
+  { version: "example", modLoaders: ["Quilt", "Fabric", "Forge"] }, // Example Of how to add an option
+];
+
 ---
 
-<Titlebar />
+<Layout title="Home">
 <Topbar />
-<main class="flex">
+<main class="flex w-full ml-5">
   <Sidebar />
   <!-- Main -->
-  <div class="w-5/6 mt-24">
+  <div class="mt-24 w-full">
     <!-- Welcome -->
     <div class="flex justify-between items-center mb-10">
         <div class="flex space-x-4">
@@ -52,6 +59,7 @@ const servers = ["hypixel", "hypixel"];
 
         <!-- News -->
         <div class="w-2/3 space-y-5">
+        <div class="h-auth overflow-y-visible">
             <div class="bg2 p-5 rounded-lg">
                 <div class="flex items-center justify-between mb-5">
                     <span class="text-lg font-semibold">TeaClient Released</span>
@@ -74,26 +82,20 @@ const servers = ["hypixel", "hypixel"];
             </div> 
         </div>
     </div>
+</div>
     
     <!-- Version + Play -->
-    <div class="flex w-5/6 bg2 p-5 h-auto rounded-lg absolute bottom-5">
-        <div class="w-1/3">
-            <label for="version" class="block mb-2 text-sm font-medium text-gray-300">Version</label>
-            <select id="version" class="bg-gray-600 text-white rounded-lg p-2 w-full">
-                <option>Forge 1.8.9</option>
-            </select>
-        </div>
-        <div class="w-2/3 mt-5 flex justify-end">
-            <button class="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold">Launch</button>
-        </div>
+    <div class="flex w-5/6 pr-3 bg2 p-2 rounded-lg absolute bottom-6">
+        <Launchbar minecrafts={minecrafts}/>
     </div>
 
   </div>
 </main>
+</Layout>
 
 <style>
   html {
-    @apply rounded-2xl bg-[#352244];
+    @apply rounded-2xl border-none bg-[#352244];
     background: linear-gradient(
       171deg,
       rgba(53, 34, 68, 1) 0%,
@@ -104,7 +106,9 @@ const servers = ["hypixel", "hypixel"];
   }
 
   body {
-    height: 100%;
+    @apply rounded-2xl border-none;
+    height: 100vh;
+    width: 100vh;
   }
 
   :root {

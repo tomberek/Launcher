@@ -1,0 +1,74 @@
+---
+let {minecrafts} = Astro.props;
+
+interface Minecraft {
+ version: string;
+ modLoaders: string[];
+}
+
+export interface Props {
+  minecrafts: Array<Minecraft>;
+}
+
+
+minecrafts = minecrafts.filter((minecraft) => minecraft.version !== "example");
+
+
+
+minecrafts.sort((a, b) => {
+ const versionA = a.version.split(".").map(Number);
+ const versionB = b.version.split(".").map(Number);
+
+ // Compare versions
+ for (let i = 0; i < versionA.length; i++) {
+    if (versionA[i] !== undefined && versionB[i] !== undefined) {
+      if (versionA[i] !== versionB[i]) {
+        return versionB[i]! - versionA[i]!;
+      }
+    }
+ }
+
+ return 0;
+});
+---
+
+<div class="flex flex-col w-1/3">
+    <label for="version" class="block text-sm font-medium h-8 text-gray-300">Version</label>
+    <div class="flex items-center relative w-32">
+            <select
+                id="version"
+                class="bg-transparent text-white h-full w-full flex-col rounded-lg shadow-none outline-none appearance-none relative"
+            >
+                {
+                    minecrafts.map((minecraft) =>
+                        minecraft.modLoaders.map((modLoader) => (
+                            <option value={`${modLoader}-${minecraft.version}`}>
+                                {modLoader} {minecraft.version}
+                            </option>
+                        ))
+                    )
+                }
+            </select>
+        <svg fill="white" class="pointer-events-none absolute right-2 w-[14px] aspect-square" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 386.257 386.257" xml:space="preserve" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #181a1b; --darkreader-inline-stroke: #e8e6e3;" stroke="#000000" data-darkreader-inline-stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <polygon points="0,96.879 193.129,289.379 386.257,96.879 "></polygon> </g></svg>
+    </div>
+</div>
+<div class="w-2/3 mt-2 flex justify-end">
+  <button
+    class="bg-[#645078] flex-row flex rounded-full text-white p-3 font-semibold gap-x-2"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="h-5"
+      ><path
+        fill="white"
+        d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+      ></path></svg
+    >
+    Launch
+  </button>
+</div>
+
+
+<style>
+    #version.select-arrow-active {
+        background-color: black;
+    }
+   </style>

@@ -17,7 +17,7 @@
       "http": {
         "all": true,
         "request": true,
-        "scope": ["https://api.mojang.com/users/profiles/minecraft/*"]
+        "scope": ["https://api.mojang.com/users/profiles/minecraft/*", "https://cdn.tailwindcss.com/*"]
       },
       "window": {
         "all": false,
