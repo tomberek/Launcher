@@ -4,7 +4,7 @@ export default {
 	theme: {
 	   extend: {
 		 backgroundColor: {
-			'teaclient': 'rgba(0,0,0,0.37)'
+			'teaclient': 'rgba(0,0,0,0.5)'
 		 },
 		 borderColor: {
 		   'teaclient': '#20102C',

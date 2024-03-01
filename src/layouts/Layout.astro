@@ -17,27 +17,25 @@ const { title } = Astro.props;
 
 		<title>{title}</title>
 	</head>
-	<body data-tauri-drag-region>
 		<Titlebar />
 		<slot />
-	</body>
 </html>
 <style is:global>
-	:root {
-		font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-		font-size: 16px;
-		line-height: 24px;
-		font-weight: 400;
 
-		color: #0f0f0f;
-		background-color: #f6f6f6;
+html {
+    @apply rounded-2xl overflow-hidden border-none bg-[#352244];
+    background: linear-gradient(
+      171deg,
+      rgba(53, 34, 68, 1) 0%,
+      rgba(17, 0, 30, 1) 100%
+    );
+    @apply bg-center bg-cover bg-no-repeat bg-fixed;
+    overflow-y: visible;
+  }
 
-		font-synthesis: none;
-		text-rendering: optimizeLegibility;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-text-size-adjust: 100%;
-	}
+  body {
+    @apply rounded-2xl overflow-hidden border-none text-white w-screen h-screen;
+  }
 
 	.logo {
 		height: 6em;
@@ -66,47 +64,4 @@ const { title } = Astro.props;
 		text-align: center;
 	}
 
-	input,
-	button {
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 0.6em 1.2em;
-		font-size: 1em;
-		font-weight: 500;
-		font-family: inherit;
-		color: #0f0f0f;
-		background-color: #ffffff;
-		transition: border-color 0.25s;
-		box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-	}
-
-	button {
-		cursor: pointer;
-	}
-
-	button:hover {
-		border-color: #396cd8;
-	}
-
-	input,
-	button {
-		outline: none;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			color: #f6f6f6;
-			background-color: #2f2f2f;
-		}
-
-		a:hover {
-			color: #24c8db;
-		}
-
-		input,
-		button {
-			color: #ffffff;
-			background-color: #0f0f0f98;
-		}
-	}
 </style>

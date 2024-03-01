@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 ---
 
     <section class="top-nav flex flex-row items-center justify-between h-[90px] ml-5 pt-[64px]">
-      <div class="logo-section">
+      <div class="logo-section float-start">
         <a href="/" title="Home page" aria-label="Home page">
           <Image src="/logo.webp" width="96" height="96" alt="teaclient logo" loading="lazy" id="logo"/>
           <span class="sr-only">Home page</span>
@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
     <a href="/" id="title">Tea Client</a></div>
             <!-- <a href="/"><img id="logo" src="/logo_white.svg"></a> -->
         </div>
-    <ul class="menu flex flex-row list-none m-0 p-0">
+    <ul class="menu list-none m-0 p-0 float-right">
                 <li>
                     <a href="/socials">Button1</a>
                 </li>
@@ -34,36 +34,6 @@ import { Image } from "astro:assets";
   overflow: hidden;
 }
 
-
-
-@media (max-width: 1200px) {
-  .menu-button-container {
-    display: flex;
-  }
-  .menu {
-    position: absolute;
-    top: 0;
-    margin-top: 90px;
-    left: 0;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .menu > li {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    width: 100%;
-    color: white;
-    backdrop-filter: blur(10px);
-    background: var(--nav-color); /* color of the dropdown menu background */
-  }
-  .menu > li:not(:last-child) {
-    border-bottom: 1px solid #444;
-  }
-}
 .nav-links {
   flex: 1;
   text-align: right;
