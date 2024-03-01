@@ -7,7 +7,7 @@ export default {
 			'teaclient': 'rgba(0,0,0,0.5)'
 		 },
 		 borderColor: {
-		   'teaclient': '#20102C',
+		   'teaclient': '#281734',
 		 },
 	   },
 	},
