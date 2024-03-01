@@ -20,9 +20,9 @@ let minecrafts = [
   <main class="flex ml-5 w-full">
     <Sidebar />
     <!-- Main -->
-    <div class="mt-2 w-full">
+    <div class="mt-2 w-[80%]">
       <!-- Welcome -->
-      <div class="flex justify-between items-center w-96 my-10">
+      <div class="flex justify-between items-center w-[20rem] my-10">
         <div class="flex space-x-4">
           <div class="rounded-lg p-2">
             <img
@@ -40,9 +40,9 @@ let minecrafts = [
 
       <!-- Server + News -->
 
-      <div class="flex w-5/6 flex-col md:flex-row justify-between">
+      <div class="flex w-full flex-col md:flex-row justify-between">
         <!-- Server List -->
-        <div class="w-full p-5 rounded-lg mr-5 space-y-5 justify-start">
+        <div class="w-[70vh] p-5 rounded-lg mr-5 space-y-5 justify-start">
            {
              servers.map((server, index) => (
                <PlayItem server={server} key={index} />
@@ -51,8 +51,8 @@ let minecrafts = [
         </div>
        
         <!-- News -->
-        <div class="flex w-3/4 flex-grow overflow-auto h-[45vh] flex-shrink justify-end">
-        <div class="flex-col flex-grow overflow-y-scroll h-screen space-y-5 justify-end">
+        <div class="flex relative w-[10vh] flex-grow overflow-auto h-[60vh] bottom-28 flex-shrink justify-end">
+        <div class="flex-col absolute flex-grow overflow-y-scroll h-screen space-y-5 justify-end">
            <NewsItem
              class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
              title="TeaClient Released"
