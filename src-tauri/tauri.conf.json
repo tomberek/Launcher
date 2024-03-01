@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "tauri-astro",
+    "productName": "TeaClient",
     "version": "0.1.0"
   },
   "tauri": {
@@ -46,7 +46,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "net.teaclient.dev",
+      "identifier": "net.teaclient",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -67,7 +67,7 @@
     "security": {
       "freezePrototype": true,
       "csp": {
-        "default-src": "'none'",
+        "default-src": "'self'",
         "img-src": "'self'"
       }
     },
