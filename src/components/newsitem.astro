@@ -1,0 +1,19 @@
+---
+let {title, date, desc, imgurl} = Astro.props;
+export interface props {
+    title: string,
+    date: string,
+    desc: string,
+    imgurl: string
+}
+---
+<div class="bg-teaclient p-5 rounded-lg">
+    <div class="flex items-center justify-between mb-5">
+        <span class="text-lg font-semibold">{title}</span>
+        <span class="text-xs text-gray-400">{date}</span>
+    </div>
+    <div class="flex items-center space-x-5">
+        <img src={imgurl} alt="TeaClient logo placeholder image" class="rounded-lg w-[200px] h-[90px]">
+        <span class="text-sm font-medium">{desc}</span>
+    </div>
+</div> 
