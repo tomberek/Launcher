@@ -16,13 +16,13 @@ let minecrafts = [
 ---
 
 <Layout title="Home">
-  <Topbar />
+  <Topbar buttonsOff={false} />
   <main class="flex ml-5">
     <Sidebar />
     <!-- Main -->
     <div class="mt-2">
       <!-- Welcome -->
-      <div class="flex justify-between items-center mb-10">
+      <div class="flex justify-between items-center w-96 my-10">
         <div class="flex space-x-4">
           <div class="rounded-lg p-2">
             <img
@@ -42,7 +42,7 @@ let minecrafts = [
 
         <div class="flex flex-grow flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5">
             <!-- Server List -->
-            <div class="w-full md:w-4/5 p-5 rounded-lg mr-5 space-y-5">
+            <div class="w-[40%] p-5 rounded-lg mr-5 space-y-5">
                 {
                     servers.map((server, index) => (
                       <PlayItem server={server} key={index} />

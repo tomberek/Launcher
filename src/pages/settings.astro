@@ -1,41 +1,15 @@
 ---
-import Titlebar from "../components/titlebar.astro";
-import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
+import Topbar from "../components/topbar.astro";
+import Layout from "../layouts/Layout.astro";
+
 ---
-
-<Titlebar />
-<Topbar />
-<Sidebar />
-<main class="mt-[-450px] ml-[130px]">
-
-  <h1>Theme</h1>
-
-  <!-- <div class="w-[50px] aspect-square rounded-full overflow-hidden">
-    <input id="colorPicker" type="color" class="w-full h-full scale-150">
-  </div> -->
-
+<Layout title="Settings">
+<Topbar buttonsOff={true} />
+<main class="flex ml-5">
+  <Sidebar />
+  <div>
+    
+  </div>
 </main>
-
-<style>
-  html {
-    @apply rounded-2xl bg-[#352244];
-    background: linear-gradient(
-      171deg,
-      rgba(53, 34, 68, 1) 0%,
-      rgba(17, 0, 30, 1) 100%
-    );
-    @apply bg-center bg-cover bg-no-repeat bg-fixed;
-    overflow-y: visible;
-  }
-
-  body {
-    height: 100%;
-  }
-
-  #gradientPicker {
-    background: linear-gradient(to right, red, yellow);
-  }
-</style>
-
-
+</Layout>  

@@ -1,5 +1,10 @@
 ---
 import { Image } from "astro:assets";
+let {buttonsOff} = Astro.props;
+
+export interface Props {
+  buttonsOff: boolean,
+}
 ---
 
     <section class="top-nav flex flex-row items-center justify-between h-[90px] ml-5 pt-[64px]">
@@ -11,13 +16,15 @@ import { Image } from "astro:assets";
     <a href="/" id="title">Tea Client</a></div>
             <!-- <a href="/"><img id="logo" src="/logo_white.svg"></a> -->
         </div>
-    <ul class="menu list-none m-0 p-0 float-right">
-                <li>
-                    <a href="/socials">Button1</a>
-                </li>
-
-                <li><a href="/docs">Button2</a></li>
-    </ul>
+        {!buttonsOff && (
+          <ul class="menu list-none m-0 p-0 float-right">
+              <li>
+                  <a href="/socials">Button1</a>
+              </li>
+          
+              <li><a href="/docs">Button2</a></li>
+          </ul>
+          )}
   </section>
 
 
