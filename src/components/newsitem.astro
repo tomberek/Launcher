@@ -7,13 +7,13 @@ export interface props {
     imgurl: string
 }
 ---
-<div class="bg-teaclient rounded-lg pb-1">
-    <img src={imgurl} alt="TeaClient logo placeholder image" class="rounded-lg w-full h-1/6">
+<div data-tauri-drag-region class="bg-teaclient rounded-lg pb-1">
+    <img data-tauri-drag-region src={imgurl} alt="TeaClient logo placeholder image" class="rounded-lg w-full h-1/6">
     <div class="flex flex-col pl-5 space-y-3">
-        <h1 class="items-start text-left font-bold text-md">{title}</h1>
+        <h1 data-tauri-drag-region  class="items-start text-left font-bold text-md">{title}</h1>
         <span class="text-sm font-medium">{desc}</span>
     </div>
     <div class="flex flex-row space-x-5 space-y-5 text-right items-end justify-end mr-5 mb-3">
-        <span>{date}</span>
+        <span data-tauri-drag-region>{date}</span>
     </div>
 </div> 

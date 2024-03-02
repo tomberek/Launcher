@@ -3,7 +3,7 @@ import Item from "./item.astro";
 let servers = ["hypixel", "mineman", "creditNW"];
 ---
 
-<div class="w-[70vh] p-5 rounded-lg mr-5 space-y-5 justify-start">
+<div data-tauri-drag-region class="w-[70vh] p-5 rounded-lg mr-5 space-y-5 justify-start">
     {
         servers.map((server, index) => (
           <Item server={server} key={index} />

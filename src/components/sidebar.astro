@@ -3,11 +3,12 @@ import { Image } from "astro:assets";
 import { version } from "../../package.json";
 ---
 
-<section class="w-32 p-5 mr-5">
+<section data-tauri-drag-region  class="w-32 p-5 mr-5">
   <ul class="menu flex flex-col list-none mt-3">
     <li>
       <a href="/"
         ><Image
+          data-tauri-drag-region 
           src="/cosmetics.png"
           width="48"
           height="48"
@@ -18,6 +19,7 @@ import { version } from "../../package.json";
     <li>
       <a href="/servers"
         ><Image
+          data-tauri-drag-region 
           src="/cosmetics.png"
           width="48"
           height="48"
@@ -28,6 +30,7 @@ import { version } from "../../package.json";
     <li>
       <a href="/mods"
         ><Image
+          data-tauri-drag-region 
           src="/cosmetics.png"
           width="48"
           height="48"
@@ -38,6 +41,7 @@ import { version } from "../../package.json";
     <li>
       <a href="/customize"
         ><Image
+          data-tauri-drag-region 
           src="/cosmetics.png"
           width="48"
           height="48"
@@ -48,6 +52,7 @@ import { version } from "../../package.json";
     <li>
       <a href="/settings"
         ><Image
+          data-tauri-drag-region 
           src="/cosmetics.png"
           width="44"
           height="44"
@@ -56,7 +61,7 @@ import { version } from "../../package.json";
       >
     </li>
   </ul>
-  <div class="absolute bottom-6 text-zinc-700" id="version">v{version}</div>
+  <div data-tauri-drag-region class="absolute bottom-6 text-zinc-700" id="version">v{version}</div>
 </section>
 
 <style>
