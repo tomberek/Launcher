@@ -7,8 +7,8 @@
   },
   "bundle": {
     "active": true,
-    "category": "DeveloperTool",
-    "copyright": "",
+    "category": "Game",
+    "copyright": "2024 TeaClient",
     "targets": "all",
     "externalBin": [],
     "icon": [
@@ -39,7 +39,7 @@
       }
     }
   },
-  "productName": "TeaClient",
+  "productName": "teaclient",
   "version": "0.1.0",
   "identifier": "net.teaclient",
   "plugins": {},
@@ -56,7 +56,8 @@
         "resizable": true,
         "title": "Teaclient",
         "decorations": false,
-        "transparent": true
+        "transparent": true,
+        "shadow": true
       }
     ],
     "security": {
