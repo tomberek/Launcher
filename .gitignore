@@ -6,8 +6,12 @@ dist/
 node_modules/
 
 ## Generated files ##
-src-tauri/gen
+src-tauri/gen/schemas
 
+
+## Tauri Mobile ##
+src-tauri/icons/android
+src-tauri/icons/ios
 
 # logs
 npm-debug.log*
