@@ -793,6 +793,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "data-url"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a"
+
+[[package]]
 name = "deranged"
 version = "0.3.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3639,6 +3645,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-plugin-fs"
+version = "2.0.0-beta.1"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v2#99bea2559c2c0648c2519c50a18cd124dacef57b"
+dependencies = [
+ "anyhow",
+ "glob",
+ "schemars",
+ "serde",
+ "serde_json",
+ "serde_repr",
+ "tauri",
+ "tauri-plugin",
+ "thiserror",
+ "url",
+ "uuid",
+]
+
+[[package]]
 name = "tauri-plugin-global-shortcut"
 version = "2.0.0-beta.1"
 source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v2#99bea2559c2c0648c2519c50a18cd124dacef57b"
@@ -3650,6 +3674,25 @@ dependencies = [
  "tauri",
  "tauri-plugin",
  "thiserror",
+]
+
+[[package]]
+name = "tauri-plugin-http"
+version = "2.0.0-beta.1"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v2#99bea2559c2c0648c2519c50a18cd124dacef57b"
+dependencies = [
+ "data-url",
+ "glob",
+ "http",
+ "reqwest",
+ "schemars",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-plugin",
+ "tauri-plugin-fs",
+ "thiserror",
+ "url",
 ]
 
 [[package]]
@@ -3760,6 +3803,7 @@ dependencies = [
  "tauri-build",
  "tauri-plugin-clipboard-manager",
  "tauri-plugin-global-shortcut",
+ "tauri-plugin-http",
  "tauri-plugin-store",
  "tokio",
 ]
