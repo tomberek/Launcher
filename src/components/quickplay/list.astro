@@ -1,0 +1,13 @@
+---
+import Item from "./item.astro";
+let serversCookie = Astro.cookies.get("servers");
+let servers = serversCookie ? JSON.parse(serversCookie.value) : ["hypixel", "mineman", "creditNW"];
+---
+
+<div class="w-[70vh] p-5 rounded-lg mr-5 space-y-5 justify-start">
+    {
+        servers.map((server, index) => (
+          <Item server={server} key={index} />
+        ))
+      }
+</div>

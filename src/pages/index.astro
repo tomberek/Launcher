@@ -1,12 +1,11 @@
 ---
 import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
-import PlayItem from "../components/playitem.astro";
+import QuickPlayList from "../components/quickplay/list.astro";
 import NewsItem from "../components/newsitem.astro";
 import Launchbar from "../components/launchbar.astro";
 import Layout from "../layouts/Layout.astro";
 
-const servers = ["hypixel", "hypixel"];
 
 let minecrafts = [
   { version: "1.20.1", modLoaders: ["Quilt", "Fabric", "Forge"] },
@@ -14,6 +13,8 @@ let minecrafts = [
   { version: "example", modLoaders: ["Quilt", "Fabric", "Forge"] }, // Example Of how to add an option
 ];
 ---
+
+
 
 <Layout title="Home">
   <Topbar buttonsOff={false} />
@@ -42,13 +43,7 @@ let minecrafts = [
 
       <div class="flex w-full flex-col md:flex-row justify-between">
         <!-- Server List -->
-        <div class="w-[70vh] p-5 rounded-lg mr-5 space-y-5 justify-start">
-           {
-             servers.map((server, index) => (
-               <PlayItem server={server} key={index} />
-             ))
-           }
-        </div>
+        <QuickPlayList />
        
         <!-- News -->
         <div class="flex relative flex-grow overflow-auto h-[71vh] bottom-48 flex-shrink justify-end">
@@ -94,3 +89,6 @@ let minecrafts = [
     </div>
   </main>
 </Layout>
+
+
+ 
