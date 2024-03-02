@@ -11,10 +11,10 @@ pub use mobile::*;
 async fn auth() {
     dotenv().ok();
 
-    /* 
-    * All Credits go to Minecraft-Essentails.
-    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
-    */
+    /*
+     * All Credits go to Minecraft-Essentails.
+     * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0
+     */
 
     let client_id = "";
     let client_secret = env::var("Client_Secret").expect("Client_Secret Is Expected");
@@ -27,10 +27,10 @@ async fn auth() {
 #[tauri::command]
 fn launch() {
 
-    /* 
-    * All Credits go to Minecraft-Essentails.
-    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
-    */
+    /*
+     * All Credits go to Minecraft-Essentails.
+     * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0
+     */
 
     //TODO: Minecraft Launching Client.
 
@@ -61,6 +61,15 @@ impl AppBuilder {
     pub fn run(self) {
         let setup = self.setup;
         tauri::Builder::default()
+            .plugin(tauri_plugin_notification::init())
+            .plugin(tauri_plugin_os::init())
+            .plugin(tauri_plugin_http::init())
+            .plugin(tauri_plugin_dialog::init())
+            .plugin(tauri_plugin_shell::init())
+            .plugin(tauri_plugin_fs::init())
+            .plugin(tauri_plugin_clipboard_manager::init())
+            .plugin(tauri_plugin_process::init())
+            .plugin(tauri_plugin_global_shortcut::Builder::new().build())
             .invoke_handler(tauri::generate_handler![auth, launch])
             .setup(move |app| {
                 if let Some(setup) = setup {

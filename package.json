@@ -15,8 +15,8 @@
   "dependencies": {
     "@astrojs/node": "^8.2.3",
     "@astrojs/tailwind": "^5.1.0",
-    "@tauri-apps/api": "^1.5.3",
-    "@tauri-apps/cli": "^1.5.9",
+    "@tauri-apps/api": "next",
+    "@tauri-apps/cli": "next",
     "@tauri-apps/plugin-global-shortcut": "^2.0.0-alpha.5",
     "astro": "^4.0.7",
     "highlight.js": "^11.9.0",
