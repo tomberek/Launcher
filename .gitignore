@@ -1,8 +1,8 @@
-# build output
+## Build Output ##
 dist/
 .output/
 
-# dependencies
+## Dependencies ##
 node_modules/
 
 ## Generated files ##
@@ -13,18 +13,19 @@ src-tauri/gen/schemas
 src-tauri/icons/android
 src-tauri/icons/ios
 
-# logs
+## Logs ##
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+## Environment Variables/Secrets ###
 .env
 .env.production
 
-# macOS-specific files
+
+## Operating System Generated files ###
 .DS_Store
 
 
