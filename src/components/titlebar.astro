@@ -55,20 +55,22 @@
 </style>
 
 <script>
-  import { appWindow } from "@tauri-apps/api/window";
+import { Window } from "@tauri-apps/api/window";
 
-  let minimizeButton = document.getElementById("titlebar-minimize");
-  if (minimizeButton) {
-    minimizeButton.addEventListener("click", () => appWindow.minimize());
-  }
+const appWindow = Window.getCurrent();
 
-  let maximizeButton = document.getElementById("titlebar-maximize");
-  if (maximizeButton) {
-    maximizeButton.addEventListener("click", () => appWindow.toggleMaximize());
-  }
+let minimizeButton = document.getElementById("titlebar-minimize");
+if (minimizeButton) {
+  minimizeButton.addEventListener("click", () => appWindow.minimize());
+}
 
-  let closeButton = document.getElementById("titlebar-close");
-  if (closeButton) {
-    closeButton.addEventListener("click", () => appWindow.close());
-  }
+let maximizeButton = document.getElementById("titlebar-maximize");
+if (maximizeButton) {
+  maximizeButton.addEventListener("click", () => appWindow.toggleMaximize());
+}
+
+let closeButton = document.getElementById("titlebar-close");
+if (closeButton) {
+  closeButton.addEventListener("click", () => appWindow.close());
+}
 </script>
