@@ -12,6 +12,8 @@ let minecrafts = [
   { version: "1.8.9", modLoaders: ["Forge"] },
   { version: "example", modLoaders: ["Quilt", "Fabric", "Forge"] }, // Example Of how to add an option
 ];
+
+let servers = ["hypixel", "mineman", "creditNW"];
 ---
 
 
@@ -43,7 +45,7 @@ let minecrafts = [
 
       <div class="flex w-full flex-col md:flex-row justify-between">
         <!-- Server List -->
-        <QuickPlayList />
+        <QuickPlayList servers={servers} />
        
         <!-- News -->
         <div data-tauri-drag-region class="flex relative flex-grow overflow-auto h-[71vh] bottom-48 flex-shrink justify-end">
