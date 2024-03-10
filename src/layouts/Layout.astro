@@ -1,16 +1,16 @@
 ---
 import Sidebar from "../components/sidebar.astro";
-import Titlebar from "../components/titlebar.astro";
+// import Titlebar from "../components/titlebar.astro";
 import Topbar from "../components/topbar.astro";
 
 export interface Props {
   title: string;
-  titlebar: boolean | false ;
-  buttons: boolean | false;
+  titlebar: boolean;
+  buttons: boolean;
   mainclass: string;
 }
 
-const { title, titlebar, buttons, mainclass } = Astro.props;
+const { title, titlebar = false, buttons = false, mainclass } = Astro.props;
 ---
 
 <!doctype html>
