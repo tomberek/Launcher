@@ -1,5 +1,4 @@
 ---
-import Topbar from "../components/topbar.astro";
 import Sidebar from "../components/sidebar.astro";
 import QuickPlayList from "../components/quickplay/list.astro";
 import NewsItem from "../components/newsitem.astro";
@@ -18,10 +17,7 @@ let servers = ["hypixel", "mineman", "creditNW"];
 
 
 
-<Layout title="Home">
-  <Topbar buttonsOff={false} />
-  <main class="flex ml-5 w-full">
-    <Sidebar />
+<Layout title="Home" buttons={false} mainclass="flex ml-5 w-full">
     <!-- Main -->
     <div class="mt-2 w-[80%]">
       <!-- Welcome -->
@@ -89,7 +85,6 @@ let servers = ["hypixel", "mineman", "creditNW"];
         <Launchbar minecrafts={minecrafts} />
       </div>
     </div>
-  </main>
 </Layout>
 
 
