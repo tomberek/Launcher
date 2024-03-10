@@ -18,12 +18,12 @@ export interface Props {
             <!-- <a href="/"><img id="logo" src="/logo_white.svg"></a> -->
         </div>
         {!buttonsOff && (
-          <ul data-tauri-drag-region class="menu list-none m-0 p-0 float-right">
+          <ul data-tauri-drag-region class="menu list-none m-0 p-0 float-right mr-2">
               <li class="bg-teaclient border border-teaclient rounded-xl">
                   <button>Button1</button>
               </li>
           
-              <li class="bg-teaclient border border-teaclient rounded-xl hover:bg-gradient-to-t from-red-700 to-red-500"><button id="close">X</button></li>
+              <li class="bg-teaclient border text-center border-teaclient aspect-square w-[6vh] rounded-xl hover:bg-gradient-to-t from-red-700 to-red-500"><button class="items-center" id="close">X</button></li>
           </ul>
           )}
   </section>
