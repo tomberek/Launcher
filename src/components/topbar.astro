@@ -23,7 +23,7 @@ export interface Props {
                   <button>Button1</button>
               </li>
           
-              <li class="bg-teaclient border border-teaclient rounded-xl"><button>X</button></li>
+              <li class="bg-teaclient border border-teaclient rounded-xl hover:bg-gradient-to-t from-red-700 to-red-500"><button id="close">X</button></li>
           </ul>
           )}
   </section>
@@ -85,3 +85,15 @@ export interface Props {
     border: 0;
 }
 </style>
+
+
+<script>
+  import { Window } from "@tauri-apps/api/window";
+
+const appWindow = Window.getCurrent();
+
+  let closeButton = document.getElementById("close");
+if (closeButton) {
+  closeButton.addEventListener("click", () => appWindow.close());
+}
+</script>
