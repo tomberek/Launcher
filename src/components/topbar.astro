@@ -5,6 +5,7 @@ let {buttonsOff} = Astro.props;
 export interface Props {
   buttonsOff: boolean,
 }
+
 ---
 
     <section data-tauri-drag-region  class="top-nav flex flex-row items-center justify-between h-[90px] ml-5 pt-[64px]">
@@ -18,11 +19,11 @@ export interface Props {
         </div>
         {!buttonsOff && (
           <ul data-tauri-drag-region class="menu list-none m-0 p-0 float-right">
-              <li>
-                  <a data-tauri-drag-region href="/socials">Button1</a>
+              <li class="bg-teaclient border border-teaclient rounded-xl">
+                  <button>Button1</button>
               </li>
           
-              <li><a data-tauri-drag-region href="/docs">Button2</a></li>
+              <li class="bg-teaclient border border-teaclient rounded-xl"><button>X</button></li>
           </ul>
           )}
   </section>
