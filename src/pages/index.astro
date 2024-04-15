@@ -1,90 +1,144 @@
 ---
-import QuickPlayList from "../components/quickplay/list.astro";
-import NewsItem from "../components/newsitem.astro";
-import Launchbar from "../components/launchbar.astro";
-import Layout from "../layouts/Layout.astro";
-
-
-let minecrafts = [
-  { version: "1.20.1", modLoaders: ["Quilt", "Fabric", "Forge"] },
-  { version: "1.8.9", modLoaders: ["Forge"] },
-  { version: "example", modLoaders: ["Quilt", "Fabric", "Forge"] }, // Example Of how to add an option
-];
-
-let servers = ["hypixel", "mineman", "creditNW"];
+import Layout from "../components/layout.astro";
+import { Image } from "astro:assets";
 ---
 
-
-
-<Layout title="Home" buttons={false} titlebar={false} mainclass="flex ml-5 w-full">
-    <!-- Main -->
-    <div class="mt-2 w-[80%]">
-      <!-- Welcome -->
-      <div class="flex justify-between items-center w-[20rem] my-10">
-        <div class="flex space-x-4">
-          <div class="rounded-lg p-2">
-            <img
-              src="https://placehold.co/128x128"
-              alt="Avatar"
-              class="rounded-lg w-[128px] aspect-square"
-            />
-          </div>
-          <div class="flex flex-col justify-center">
-            <span class="text-lg font-semibold">Welcome back,</span>
-            <span class="text-2xl font-bold">Username</span>
-          </div>
+<Layout
+  title="Home | TeaClient"
+  buttons={false}
+  titlebar={false}
+  mainclass="flex ml-5 w-full"
+>
+  <div class="mt-2 w-[80%]">
+    <!-- Welcome -->
+    <div
+      class="flex justify-between items-center w-[48%] my-10 rounded-xl bg-green-800"
+    >
+      <div class="flex space-x-4">
+        <div class="rounded-lg p-2">
+          <img
+            src="https://placehold.co/128x128"
+            alt="Avatar"
+            class="rounded-lg w-[128px] aspect-square"
+          />
         </div>
-      </div>
-
-      <!-- Server + News -->
-
-      <div class="flex w-full flex-col md:flex-row justify-between">
-        <!-- Server List -->
-        <QuickPlayList servers={servers} />
-       
-        <!-- News -->
-        <div data-tauri-drag-region class="flex relative flex-grow overflow-auto h-screen md:h-[71vh] bottom-48 flex-shrink justify-end">
-        <div data-tauri-drag-region class="flex-col absolute flex-grow overflow-y-scroll h-screen space-y-5 justify-end">
-           <NewsItem
-             class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
-             title="TeaClient Released"
-             date="April 1st, 2024"
-             desc="TeaClient has been officially released! ..."
-             imgurl="/Tea_client_banner.png"
-           />
-           <NewsItem
-           class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
-           title="TeaClient Released"
-           date="April 1st, 2024"
-           desc="TeaClient has been officially released! ..."
-           imgurl="/Tea_client_banner.png"
-         />
-         <NewsItem
-         class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
-         title="TeaClient Released"
-         date="April 1st, 2024"
-         desc="TeaClient has been officially released! ..."
-         imgurl="/Tea_client_banner.png"
-       />
-       <NewsItem
-       class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4"
-       title="TeaClient Released"
-       date="April 1st, 2024"
-       desc="TeaClient has been officially released! ..."
-       imgurl="/Tea_client_banner.png"
-     />
+        <div class="flex flex-col justify-center">
+          <span class="text-lg font-semibold font-jbm">Welcome back,</span>
+          <span class="text-2xl font-bold font-jbm">Username</span>
         </div>
-      </div>
-       </div>
-
-      <!-- Version + Play -->
-      <div
-        class="flex flex-grow w-5/6 h-16 items-center pr-3 bg-teaclient border border-teaclient p-2 rounded-lg absolute bottom-6 left-40"
-      >
-        <Launchbar minecrafts={minecrafts} />
       </div>
     </div>
+
+    <!-- Card End -->
+
+    <!-- servers  -->
+    <div
+      class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
+    >
+      <div class="flex items-center">
+        <Image
+          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
+          width="45"
+          height="45"
+          alt="Sharpie"
+          loading="lazy"
+          id="logo"
+          class="rounded-md"
+        />
+        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
+      </div>
+      <div class="flex items-center justify-center">
+        <button class="p-2 bg-[#2C1E36] rounded-md">
+          <!-- Play Button  -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
+            ></path></svg
+          >
+        </button>
+      </div>
+    </div>
+    <div
+      class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
+    >
+      <div class="flex items-center">
+        <Image
+          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
+          width="45"
+          height="45"
+          alt="Sharpie"
+          loading="lazy"
+          id="logo"
+          class="rounded-md"
+        />
+        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
+      </div>
+      <div class="flex items-center justify-center">
+        <button class="p-2 bg-[#2C1E36] rounded-md">
+          <!-- Play Button  -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
+            ></path></svg
+          >
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="bg-servers border border-servers-border p-2 transition-all w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
+    >
+      <div class="flex items-center">
+        <Image
+          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
+          width="45"
+          height="45"
+          alt="Sharpie"
+          loading="lazy"
+          id="logo"
+          class="rounded-md"
+        />
+        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
+      </div>
+      <div class="flex items-center justify-center">
+        <button class="p-2 bg-[#2C1E36] rounded-md">
+          <!-- Play Button  -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
+            ></path></svg
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+
 </Layout>
 
-
- 
+<style>
+  html {
+    @apply rounded-2xl bg-[#352244];
+    background: linear-gradient(
+      171deg,
+      rgba(53, 34, 68, 1) 0%,
+      rgba(17, 0, 30, 1) 100%
+    );
+    @apply bg-center bg-cover bg-no-repeat bg-fixed;
+    overflow-y: visible;
+  }
+</style>

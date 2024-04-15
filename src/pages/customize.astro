@@ -1,9 +1,28 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
+import { Image } from "astro:assets";
+import Layout from "../components/layout.astro";
 ---
-<Layout title="Mods" buttons={true} titlebar={false} mainclass="flex ml-5 w-full" >
-  <div>
-    
-  </div>
-</Layout>  
+
+<Layout
+  title="Home | TeaClient"
+  buttons={false}
+  titlebar={false}
+  mainclass="flex ml-5 w-full"
+>
+<div class="flex h-screen justify-center items-center align-middle m-auto">
+ <h1 class="text-4xl font-jbm font-bold">This page is coming soon</h1>
+</div>
+</Layout>
+
+<style>
+  html {
+    @apply rounded-2xl bg-[#352244];
+    background: linear-gradient(
+      171deg,
+      rgba(53, 34, 68, 1) 0%,
+      rgba(17, 0, 30, 1) 100%
+    );
+    @apply bg-center bg-cover bg-no-repeat bg-fixed;
+    overflow-y: visible;
+  }
+</style>
