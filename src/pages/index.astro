@@ -165,9 +165,8 @@ let serverImg = [""];
     }
 
     if (username !== "" && userimageElement) {
-      const proxyUrl = "https://api.teaclient.net/cors";
-      const targetUrl = `https://visage.surgeplay.com/face/256/${username}`;
-      fetch(proxyUrl + targetUrl)
+      const targetUrl = `https://visage.surgeplay.com/bust/256/${username}`;
+      fetch(targetUrl)
         .then((response) => response.blob())
         .then((blob) => {
           const url = URL.createObjectURL(blob);
@@ -175,7 +174,5 @@ let serverImg = [""];
         })
         .catch((error) => console.error("Error fetching user image:", error));
     }
-
-    localStorage.setItem("username", "eveeify");
   };
 </script>
