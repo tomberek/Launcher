@@ -29,7 +29,7 @@ const { title, launchbar = false, buttons = false, mainclass } = Astro.props;
   <main class={mainclass}>
   <Sidebar />
   <slot />
-  { launchbar == false && <Launchbar/> }
+  { launchbar && <Launchbar/> }
 </main>
   </body>
 
