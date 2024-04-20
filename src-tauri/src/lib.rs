@@ -11,12 +11,12 @@ pub use mobile::*;
 async fn auth() {
     dotenv().ok();
 
-    /* 
-    * All Credits go to Minecraft-Essentails.
-    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
-    */
+    /*
+     * All Credits go to Minecraft-Essentails.
+     * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0
+     */
 
-    let client_id = ""
+    let client_id = "";
     let client_secret = env::var("Client_Secret").expect("Client_Secret Is Expected");
     let ouath = minecraft_essentials::Oauth::new(&client_id);
     print!("URL: {}", ouath.url());
@@ -27,10 +27,10 @@ async fn auth() {
 #[tauri::command]
 fn launch() {
 
-    /* 
-    * All Credits go to Minecraft-Essentails.
-    * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0 
-    */
+    /*
+     * All Credits go to Minecraft-Essentails.
+     * Note: Minecraft-Essentails Is Licenced Under The Affero GPL 3.0
+     */
 
     //TODO: Minecraft Launching Client.
 
