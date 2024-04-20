@@ -6,13 +6,12 @@ import Topbar from "../components/top.astro";
 
 export interface Props {
   title: string;
-  titlebar: boolean;
   buttons: boolean;
   launchbar?: boolean;
   mainclass: string;
 }
 
-const { title, titlebar = false, launchbar = false, buttons = false, mainclass } = Astro.props;
+const { title, launchbar = false, buttons = false, mainclass } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,7 +29,7 @@ const { title, titlebar = false, launchbar = false, buttons = false, mainclass }
   <main class={mainclass}>
   <Sidebar />
   <slot />
-  { launchbar && <Launchbar/> }
+  { launchbar == false && <Launchbar/> }
 </main>
   </body>
 
