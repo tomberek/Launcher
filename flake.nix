@@ -107,7 +107,6 @@
             pre-commit.hooks = {
               nixfmt.package = pkgs.nixfmt-rfc-style;
               nixfmt.enable = true;
-              clippy.enable = true;
             };
 
             # https://devenv.sh/integrations/dotenv/
