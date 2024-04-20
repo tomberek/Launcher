@@ -21,8 +21,8 @@ tauri-plugin-http = { git = "https://github.com/tauri-apps/plugins-workspace", b
 
 serde_json = "*"
 serde = "*"
-tokio = { version = "*", features = ["macros"] }
-minecraft-essentials = { git = "https://github.com/minecraft-essentials/minecraft-essentials", branch = "eveeifyeve/minecraft-auth"}
+tokio = { version = "1.37", features = ["macros"] }
+minecraft-essentials = "0.2.10"
 
 [features]
 default = [ "custom-protocol" ]
