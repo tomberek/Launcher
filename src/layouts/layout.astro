@@ -1,4 +1,5 @@
 ---
+import Launchbar from "../components/launchbar.astro";
 import Sidebar from "../components/side.astro";
 // import Titlebar from "../components/titlebar.astro";
 import Topbar from "../components/top.astro";
@@ -7,10 +8,11 @@ export interface Props {
   title: string;
   titlebar: boolean;
   buttons: boolean;
+  launchbar?: boolean;
   mainclass: string;
 }
 
-const { title, titlebar = false, buttons = false, mainclass } = Astro.props;
+const { title, titlebar = false, launchbar = false, buttons = false, mainclass } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,7 +30,8 @@ const { title, titlebar = false, buttons = false, mainclass } = Astro.props;
   <main class={mainclass}>
   <Sidebar />
   <slot />
-  </main>
+  { launchbar && <Launchbar/> }
+</main>
   </body>
 
   <style is:global>
