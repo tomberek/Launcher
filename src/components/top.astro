@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="top-0 flex justify-between items-center bg-transparent">
+  <div class="gap-3 flex items-center">
+    <a href="/" title="Home page" aria-label="Home page" class="ml-5">
+      <Image
+        src="/logo.webp"
+        width="96"
+        height="96"
+        alt="teaclient logo"
+        loading="lazy"
+        id="logo"
+      />
+      <span class="sr-only">Home page</span>
+    </a>
+    <a href="/" id="title" class="font-jbm text-3xl text-white font-bold">TeaClient</a>
+  </div>
+  <div class="flex items-center gap-2">
+    <button
+      class="flex items-center align-middle justify-center rounded-xl transition-colors hover:transition-colors bg-teaclient/65 hover:bg-teaclient/35 p-1 text-white"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="2.5em"
+        height="2.5em"
+        viewBox="0 0 24 24"
+        ><circle cx="12" cy="8" r="4" fill="currentColor"></circle><path
+          fill="currentColor"
+          d="M5.338 17.32C5.999 14.528 8.772 13 11.643 13h.714c2.871 0 5.644 1.527 6.305 4.32c.128.541.23 1.107.287 1.682c.055.55-.397.998-.949.998H6c-.552 0-1.004-.449-.949-.998c.057-.575.159-1.14.287-1.681"
+        ></path></svg
+      > 
+    </button>
+
+        <button class="flex items-center align-middle justify-center mr-2 transition-colors hover:transition-all hover:bg-gradient-to-r rounded-xl bg-teaclient p-1 from-red-500 to-red-600 text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="2.5em"
+            height="2.5em"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none">
+              <>
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  fill="currentColor"
+                  fill-opacity="0.25"
+                />
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="m16 8l-8 8m0-8l8 8"
+                />
+              </>
+            </g>
+          </svg>
+        </button>
+  </div>
+</section>
