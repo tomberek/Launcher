@@ -1,8 +1,25 @@
----
 
----
+<div data-tauri-drag-region class="flex items-center justify-between absolute border border-[#2e2335] bg-servers w-[85%] bottom-[8%] ml-32 h-16 rounded-xl">
+    <select class="w-32 ml-6 h-[] border border-[#2e2335] bg-servers rounded-xl">
+        <option value="Fabric 1.20">Fabric 1.20</option>
+    </select>
 
-
-<div data-tauri-drag-region class="flex absolute border border-[#2e2335] bg-servers w-[85%] bottom-[11%] ml-32 h-16 rounded-2xl">
-
+    <button class="w-32 mr-6 h-10 border border-[#2e233591] hover:border-[#2e2335] hover:bg-[#513d5e] bg-servers rounded-xl">
+        Launch
+    </button>
 </div>
+
+<style>
+    select {
+ -webkit-appearance: none;
+ -moz-appearance: none;
+ appearance: none;
+ text-align-last: center; /* For Firefox */
+ text-align: center; /* For other browsers */
+}
+
+select option {
+ background-color: #2e2335; /* Match the background color of the select */
+ color: white; /* Text color */
+}
+</style>
