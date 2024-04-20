@@ -1,10 +1,9 @@
-
 <div data-tauri-drag-region class="flex items-center justify-between absolute border border-[#2e2335] bg-servers w-[85%] bottom-[8%] ml-32 h-16 rounded-xl">
-    <select class="w-32 ml-6 h-[63%] border border-[#2e2335] bg-servers rounded-xl">
+    <select id="selector" class="w-32 ml-6 h-[63%] border border-[#2e2335] bg-servers rounded-xl">
         <option value="Fabric 1.20">Fabric 1.20</option>
     </select>
 
-    <button class="w-32 mr-6 h-[65%] border border-[#2e233591] hover:border-[#2e2335] hover:bg-[#513d5e] bg-servers rounded-xl">
+    <button id="launchbutton" class="w-32 mr-6 h-[65%] border border-[#2e233591] hover:border-[#2e2335] hover:bg-[#513d5e] bg-servers rounded-xl">
         Launch
     </button>
 </div>
@@ -23,3 +22,17 @@ select option {
  color: white; /* Text color */
 }
 </style>
+
+<script>
+    import { invoke } from "@tauri-apps/api/core";
+    let launch_button = document.getElementById('launchbuttom') as HTMLButtonElement;
+    let selector = document.getElementById('selector') as HTMLSelectElement;
+    
+    if (launch_button && selector && launch_button.onclick) {
+        handle_launch(selector.value)
+    }
+    
+    function handle_launch(version: String) {
+        invoke('launch', { version: version });
+    }
+</script>
