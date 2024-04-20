@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import { Image } from "astro:assets";
 
 let servers = ["droops", "hypixel", "mineman"]
+let serverImg = [""]
 
 ---
 
@@ -20,6 +21,7 @@ let servers = ["droops", "hypixel", "mineman"]
       <div class="flex space-x-4">
         <div class="rounded-lg p-2">
           <img
+            id="userimage"
             src="https://placehold.co/128x128"
             alt="Avatar"
             class="rounded-lg w-[128px] aspect-square"
@@ -27,7 +29,7 @@ let servers = ["droops", "hypixel", "mineman"]
         </div>
         <div class="flex flex-col justify-center">
           <span class="text-lg font-semibold font-jbm">Welcome back,</span>
-          <span class="text-2xl font-bold font-jbm">Username</span>
+          <span id="username" class="text-2xl font-bold font-jbm">Get started by Logging into TeaClient</span>
         </div>
       </div>
     </div>
@@ -145,3 +147,14 @@ let servers = ["droops", "hypixel", "mineman"]
     overflow-y: visible;
   }
 </style>
+
+
+<script>
+  window.onload = function() {
+      const usernameElement = document.getElementById('username');
+      const username = localStorage.getItem('username') || 'Get started by Logging into TeaClient';
+      if (usernameElement) {
+        usernameElement.textContent = username;
+      }
+  };
+ </script>
