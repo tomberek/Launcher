@@ -2,14 +2,15 @@
 import Layout from "../layouts/layout.astro";
 import { Image } from "astro:assets";
 
-let servers = ["droops", "hypixel", "mineman"];
-let serverImg = [""];
+let servers = ["droops", "hypixel", "mineman"]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
+let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
 ---
 
 <Layout
   title="Home | TeaClient"
   buttons={false}
   titlebar={false}
+  launchbar={true}
   mainclass="flex ml-5 w-full"
 >
   <div class="mt-2 w-[80%]">
@@ -161,11 +162,11 @@ let serverImg = [""];
       "Get started by Logging into TeaClient";
     const username = localStorage.getItem("username") || "";
     if (usernameElement) {
-      usernameElement.textContent = usernameText;
+      usernameElement.textContent = usernameText.charAt(0).toUpperCase() + usernameText.slice(1).toLowerCase();;
     }
 
     if (username !== "" && userimageElement) {
-      const targetUrl = `https://visage.surgeplay.com/bust/256/${username}`;
+      const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLocaleLowerCase()}`;
       fetch(targetUrl)
         .then((response) => response.blob())
         .then((blob) => {
