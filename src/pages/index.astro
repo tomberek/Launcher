@@ -150,11 +150,28 @@ let serverImg = [""]
 
 
 <script>
-  window.onload = function() {
-      const usernameElement = document.getElementById('username');
-      const username = localStorage.getItem('username') || 'Get started by Logging into TeaClient';
-      if (usernameElement) {
-        usernameElement.textContent = username;
-      }
-  };
+window.onload = function() {
+    const usernameElement = document.getElementById('username') as HTMLSpanElement;
+    const userimageElement = document.getElementById('userimage') as HTMLImageElement;
+    const usernameText = localStorage.getItem('username') || 'Get started by Logging into TeaClient';
+    const username = localStorage.getItem('username') || '';
+    if (usernameElement) {
+        usernameElement.textContent = usernameText;
+    }
+
+    if (username !== '' && userimageElement) { 
+        const userImageUrl = `https://visage.surgeplay.com/face/256/${username}`;
+        fetch(userImageUrl, {
+            headers: {
+                'User-Agent': 'Your User-Agent String Here'
+            }
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            userimageElement.src = url;
+        })
+        .catch(error => console.error('Error fetching user image:', error));
+    }
+};
  </script>
