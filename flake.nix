@@ -93,11 +93,10 @@
 
             languages.javascript = {
               enable = true;
-              # Enable your Favourite Package Manager via here.
-              # bun = {
-              #   enable = true;
-              #   install.enable = true;
-              # };
+              bun = {
+                enable = true;
+                install.enable = true;
+              };
             };
 
             languages.typescript = {
