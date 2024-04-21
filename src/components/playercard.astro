@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  playerImage: string;
+  playerName: string;
+  playerStatus: string;
+}
+
+const { playerImage, playerName, playerStatus } = Astro.props;
+---
+
+<a href="/docs">
+  <div class="playerCard">
+    <div class="playerCardImage">
+      <Image src={playerImage} alt={playerName} height="48" width="48" />
+    </div>
+    <div class="playerCardName">{playerName}</div>
+    <div class="playerCardStatus"><p>{playerStatus}</p></div>
+  </div>
+</a>
+
+<style>
+  .playerCard {
+    display: flex;
+    height: 64px;
+    width: 400px;
+    background-color: rgb(40, 40, 40, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(40, 40, 40, 1);
+    align-items: center;
+  }
+  p {
+    color: white;
+  }
+
+  a {
+    color: var(--navBar-Items);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    &:hover {
+      color: var(--hover-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+  img {
+    border-radius: 3px;
+  }
+  .playerCardImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px 0px 8px;
+    height: 48px;
+    width: 48px;
+  }
+
+  .playerCardStatus {
+    display: flex;
+    margin-left: auto;
+    padding-right: 8px;
+  }
+</style>
