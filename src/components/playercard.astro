@@ -10,7 +10,8 @@ interface Props {
 const { playerImage, playerName, playerStatus } = Astro.props;
 ---
 
-<a href="/docs">
+<front-matter data-playerName={playerName}/>
+<button id="playerCardButton">
   <div class="playerCard">
     <div class="playerCardImage">
       <Image src={playerImage} alt={playerName} height="48" width="48" />
@@ -18,7 +19,30 @@ const { playerImage, playerName, playerStatus } = Astro.props;
     <div class="playerCardName">{playerName}</div>
     <div class="playerCardStatus"><p>{playerStatus}</p></div>
   </div>
-</a>
+</button>
+
+<script>
+class PlayerVar extends HTMLElement {
+ username: string;
+ constructor() {
+    super();
+    this.username = this.dataset.playerName || '';
+ }
+}
+  customElements.define('front-matter', PlayerVar);
+ 
+  const playerbutton = document.getElementById('playerCardButton') as HTMLButtonElement;
+  const frontmatterElement = document.querySelector('front-matter');
+  const frontmatter = frontmatterElement as PlayerVar;
+  console.log(frontmatter.username)
+
+playerbutton.onclick = () => {
+   if (frontmatter && frontmatter.username == '') {
+     localStorage.setItem('username', frontmatter.username);
+   }
+};
+ </script>
+
 
 <style>
   .playerCard {
