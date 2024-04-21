@@ -149,29 +149,60 @@ let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT
 </style>
 
 <script>
-  window.onload = function () {
-    const usernameElement = document.getElementById(
-      "username"
-    ) as HTMLSpanElement;
-    const userimageElement = document.getElementById(
-      "userimage"
-    ) as HTMLImageElement;
-    const usernameText = localStorage.getItem("username");
-    const username = usernameText || "";
+window.onload = function () {
+ const usernameElement = document.getElementById("username") as HTMLSpanElement;
+ const userimageElement = document.getElementById("userimage") as HTMLImageElement;
+ const usernameText = localStorage.getItem("username");
+ const username = usernameText || "";
 
-    if (usernameElement && username) {
-      usernameElement.textContent = username;
+ // Define the type for the imageCache object
+ interface ImageCache {
+    [key: string]: string;
+ }
+
+ // Declare imageCache with the defined type
+ const imageCache: ImageCache = {};
+
+ function reload_elements(
+    usernameElement: HTMLSpanElement,
+    userimageElement: HTMLImageElement,
+    username: string
+ ) {
+    console.log("CALLED");
+    // Early return if usernameElement is not provided or username is empty
+    if (!usernameElement || !username) return;
+
+    // Update username text content
+    usernameElement.textContent = username;
+
+    // Early return if userimageElement is not provided
+    if (!userimageElement) return;
+
+    // If image is cached, update the image source
+    if (imageCache[username]) {
+      userimageElement.src = imageCache[username] || "";
+      return;
     }
 
-    if (username && userimageElement) {
-      const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLowerCase()}`;
-      fetch(targetUrl)
-        .then((response) => response.blob())
-        .then((blob) => {
-          const url = URL.createObjectURL(blob);
-          userimageElement.src = url;
-        })
-        .catch((error) => console.error("Error fetching user image:", error));
-    }
-  };
+    // Fetch the image if not cached
+    const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLowerCase()}`;
+    fetch(targetUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        imageCache[username] = url;
+        userimageElement.src = url;
+      })
+      .catch((error) => console.error("Error fetching user image:", error));
+ }
+
+ // Correctly call the function with the retrieved username and elements
+ reload_elements(usernameElement, userimageElement, username);
+
+ // Set up an interval to periodically reload elements
+ setInterval(
+    () => reload_elements(usernameElement, userimageElement, username),
+    3000
+ );
+};
 </script>
