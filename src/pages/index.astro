@@ -156,11 +156,15 @@ let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT
     const userimageElement = document.getElementById(
       "userimage"
     ) as HTMLImageElement;
-    const username = localStorage.getItem("username");
+    const usernameText = localStorage.getItem("username");
+    const username = usernameText || "";
 
-    if (username && userimageElement && usernameElement) {
-      usernameElement.textContent = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();;
-      const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLocaleLowerCase()}`;
+    if (usernameElement && username) {
+      usernameElement.textContent = username;
+    }
+
+    if (username && userimageElement) {
+      const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLowerCase()}`;
       fetch(targetUrl)
         .then((response) => response.blob())
         .then((blob) => {
