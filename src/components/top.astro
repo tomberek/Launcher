@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import PlayerCard from "../components/playercard.astro";
 ---
 
 <section class="top-0 flex justify-between items-center bg-transparent">
@@ -15,50 +16,176 @@ import { Image } from "astro:assets";
       />
       <span class="sr-only">Home page</span>
     </a>
-    <a href="/" id="title" class="font-jbm text-3xl text-white font-bold">TeaClient</a>
+    <a href="/" id="title" class="font-jbm text-3xl text-white font-bold"
+      >TeaClient</a
+    >
   </div>
-  <div class="flex items-center gap-2">
-    <button
-      class="flex items-center align-middle justify-center rounded-xl transition-colors hover:transition-colors bg-teaclient/65 hover:bg-teaclient/35 p-1 text-white"
+  <input id="menu-toggle" type="checkbox" class="hidden" />
+  <label class="menu-button-container flex justify-center" for="menu-toggle">
+    <div
+      id="auth-button"
+      class="menu-button flex align-middle justify-center right-[50%] absolute rounded-xl transition-colors hover:transition-colors bg-black/40 hover:bg-black/80 p-1 text-white"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="2.5em"
-        height="2.5em"
+        width="3.5em"
+        height="3.5em"
         viewBox="0 0 24 24"
         ><circle cx="12" cy="8" r="4" fill="currentColor"></circle><path
           fill="currentColor"
           d="M5.338 17.32C5.999 14.528 8.772 13 11.643 13h.714c2.871 0 5.644 1.527 6.305 4.32c.128.541.23 1.107.287 1.682c.055.55-.397.998-.949.998H6c-.552 0-1.004-.449-.949-.998c.057-.575.159-1.14.287-1.681"
         ></path></svg
-      > 
-    </button>
+      >
+    </div>
+  </label>
+  <ul
+    class="menu h-screen max-h-screen z-10 top-0 right-[-30%] absolute bg-black pt-10 px-10"
+  >
+    <h1 class="flex align-left pl-5 text-3xl font-bold">Accounts</h1>
+    <li>
+      <Image
+        src="/login_thumbnail.png"
+        width="400"
+        height="225"
+        alt="TeaClient Logo"
+        loading="lazy"
+        id="login_thumbnail"
+        class="rounded-xl mt-14 mb-2"
+      />
+    </li>
 
-        <button class="flex items-center align-middle justify-center mr-2 transition-colors hover:transition-all hover:bg-gradient-to-r rounded-xl bg-teaclient p-1 from-red-500 to-red-600 text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="2.5em"
-            height="2.5em"
-            viewBox="0 0 24 24"
-          >
-            <g fill="none">
-              <>
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="9"
-                  fill="currentColor"
-                  fill-opacity="0.25"
-                />
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="m16 8l-8 8m0-8l8 8"
-                />
-              </>
-            </g>
-          </svg>
-        </button>
-  </div>
+    <li>
+      <PlayerCard
+        playerImage="/asmodeus.png"
+        playerName="Asmodeus"
+        playerStatus="Online"
+      />
+    </li>
+    <li>
+      <PlayerCard
+        playerImage="/eveeify.png"
+        playerName="Eveeify"
+        playerStatus="Online"
+      />
+    </li>
+    <li>
+      <PlayerCard
+        playerImage="/Ray.png"
+        playerName="Ray"
+        playerStatus="Online"
+      />
+    </li>
+    <!-- Change the below later to use a real Microsoft button -->
+    <li class="flex items-center align-middle justify-center">
+      <button
+        class="flex items-center transition-colors hover:transition-all hover:bg-gradient-to-r rounded-xl bg-teaclient p-1 from-red-500 to-red-600 text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="3.5em"
+          height="3.5em"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13h-1v4.5h-3v1h3v3h1v-3h3v-1h-3z"
+          ></path>
+        </svg>
+        <span class="ml-2">Sign in with Microsoft</span>
+      </button>
+    </li>
+    <!-- Change the above later to use a real Microsoft button -->
+  </ul>
+  <button
+    name="close-button"
+    class="flex items-center justify-center mr-4 transition-colors hover:transition-all hover:bg-gradient-to-r rounded-xl bg-teaclient p-1 from-red-500 to-red-600 text-white"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="3.5em"
+      height="3.5em"
+      viewBox="0 0 24 24"
+    >
+      <g fill="none">
+        <>
+          <circle cx="12" cy="12" r="9" fill="currentColor" fill-opacity="0.25"
+          ></circle>
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.2"
+            d="m16 8l-8 8m0-8l8 8"></path>
+        </>
+      </g>
+    </svg>
+  </button>
 </section>
+
+<style>
+  .menu-button-container {
+    display: none;
+    height: 32px;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    width: 64px;
+    position: absolute;
+    right: 64px;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  .menu-button-container {
+    display: flex;
+    z-index: 2;
+  }
+
+  #menu-toggle:checked ~ ul.menu {
+    position: absolute;
+    backdrop-filter: blur(10px);
+    background-color: rgb(0, 0, 0, 0.7);
+    border-left: 1.5px solid #333;
+    -webkit-backdrop-filter: blur(10px);
+    transition:
+      backdrop-filter 0.3s ease-in,
+      background-color 0.3s ease-in,
+      right 0.4s ease-in;
+    right: 0%;
+    z-index: 1;
+  }
+
+  #menu-toggle:checked ~ .menu-button-container {
+    transform: translateX(64px);
+    transition: transform 0.6s;
+    z-index: 2;
+    position: absolute;
+  }
+
+  #menu-toggle ~ .menu-button-container {
+    transform: translateX(-64px);
+    transition: transform 0.6s;
+    z-index: 2;
+    position: absolute;
+  }
+
+  #menu-toggle ~ ul.menu {
+    transition:
+      backdrop-filter 0.3s ease-in,
+      background-color 0.3s ease-in,
+      right 0.6s ease-out;
+    right: -40%;
+    z-index: 1;
+  }
+  .nav-links {
+    flex: 1;
+    text-align: right;
+  }
+
+  .menu li {
+    padding: 0.5rem;
+  }
+</style>
