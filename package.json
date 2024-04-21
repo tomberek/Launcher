@@ -28,6 +28,9 @@
   "devDependencies": {
     "bun-types": "latest"
   },
+  "trustedDependencies": [
+    "sharp"
+  ],
   "peerDependencies": {
     "typescript": "^5.0.0"
   }
