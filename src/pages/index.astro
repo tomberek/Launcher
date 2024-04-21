@@ -156,12 +156,10 @@ let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT
     const userimageElement = document.getElementById(
       "userimage"
     ) as HTMLImageElement;
-    const usernameText =
-      localStorage.getItem("username") ||
-      "Get started by Logging into TeaClient";
+    const usernameText = localStorage.getItem("username");
     const username = localStorage.getItem("username") || "";
     if (usernameElement) {
-      usernameElement.textContent = usernameText.charAt(0).toUpperCase() + usernameText.slice(1).toLowerCase();;
+      usernameElement.textContent = usernameText.charAt(0).toUpperCase();
     }
 
     if (username !== "" && userimageElement) {
