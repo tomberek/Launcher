@@ -1,6 +1,0 @@
-name: Deploy TeaClient 
-on: 
-    push:
-        branches: ["main"]
-jobs: 
-    build: 
