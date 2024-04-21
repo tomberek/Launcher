@@ -10,29 +10,29 @@ interface Props {
 const { playerImage, playerName, playerStatus } = Astro.props;
 ---
 
-<button id="button">
+<button class="playerCardButton" id="button">
   <div class="playerCard">
-    <div class="playerCardImage">
-      <Image src={playerImage} alt={playerName} height="48" width="48" />
-    </div>
-    <div class="playerCardName" id="username">{playerName}</div>
-    <div class="playerCardStatus"><p>{playerStatus}</p></div>
+     <div class="playerCardImage">
+       <Image src={playerImage} alt={playerName} height="48" width="48" />
+     </div>
+     <div class="playerCardName" id="username">{playerName}</div>
+     <div class="playerCardStatus"><p>{playerStatus}</p></div>
   </div>
-</button>
+ </button>
 
 <script>
-//   document.addEventListener('DOMContentLoaded', (event) => {
-//     const button = document.getElementById('button') as HTMLButtonElement;
-//     const usernameDiv = document.getElementById('username') as HTMLDivElement;
-//     let username = usernameDiv.textContent;
-
-//       if (usernameDiv && button && username) {
-//         button.addEventListener('click', () => {
-//           console.log(`Clicked: ${username} `)
-//           localStorage.setItem('username', username);
-//        });
-//       }
-//  });
+  document.addEventListener('DOMContentLoaded', () => {
+     const buttons = document.querySelectorAll('.playerCardButton');
+     buttons.forEach(button => {
+       const usernameDiv = button.querySelector('.playerCardName');
+       if (usernameDiv && button) {
+         button.addEventListener('click', () => {
+           let username = usernameDiv.textContent;
+           localStorage.setItem('username', username || '');
+         });
+       }
+     });
+  });
  </script>
 
 
