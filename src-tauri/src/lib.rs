@@ -1,5 +1,4 @@
 use minecraft_essentials::{Oauth, CustomAuthData};
-use serde_json::Value;
 use tauri::App;
 use tauri_plugin_http::{reqwest, Error};
 
