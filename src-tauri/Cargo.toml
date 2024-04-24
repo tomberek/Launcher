@@ -19,12 +19,13 @@ tauri-plugin-clipboard-manager = { git = "https://github.com/tauri-apps/plugins-
 tauri-plugin-http = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-localhost = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-fs = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
+tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 
 
 serde_json = "*"
 serde = "*"
 tokio = { version = "1.37", features = ["macros"] }
-minecraft-essentials = "0.2.10"
+minecraft-essentials = "0.2.11"
 open = "5.1.2"
 
 [features]

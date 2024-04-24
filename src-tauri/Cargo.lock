@@ -2069,9 +2069,9 @@ checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
 
 [[package]]
 name = "minecraft-essentials"
-version = "0.2.10"
+version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e513b5ecc9c82b99024ad5f574da069e684a22b40b9ea9b474be83932a4be7d"
+checksum = "4c1ede1d9d93b929972b594f243bfed661013a926d89acfac3e48c6590e8563d"
 dependencies = [
  "clap",
  "displaydoc",
@@ -2084,6 +2084,7 @@ dependencies = [
  "serde_urlencoded",
  "thiserror",
  "tokio",
+ "url",
 ]
 
 [[package]]
@@ -3807,6 +3808,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-plugin-store"
+version = "2.0.0-beta.5"
+source = "git+https://github.com/tauri-apps/plugins-workspace?branch=v2#cdd3aafdc671d1336fb190f6cdc198ca0e4f45a2"
+dependencies = [
+ "dunce",
+ "log",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-plugin",
+ "thiserror",
+]
+
+[[package]]
 name = "tauri-runtime"
 version = "2.0.0-beta.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3909,6 +3924,7 @@ dependencies = [
  "tauri-plugin-global-shortcut",
  "tauri-plugin-http",
  "tauri-plugin-localhost",
+ "tauri-plugin-store",
  "tokio",
 ]
 
