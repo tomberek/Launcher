@@ -44,6 +44,4 @@ jobs:
              releaseName: 'App v__VERSION__'
              releaseBody: | 
               A new version of teaclient has been released
-             owner: "eveeifyeve"
-             repo: teaclientmc/launcher
              args: ${{ matrix.settings.args }}
