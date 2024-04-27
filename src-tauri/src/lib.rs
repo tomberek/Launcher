@@ -1,3 +1,5 @@
+use std::{thread, sync::mpsc};
+
 use minecraft_essentials::{Oauth, CustomAuthData};
 use tauri::App;
 use tauri_plugin_http::{reqwest, Error};
@@ -7,16 +9,26 @@ async fn auth() -> Result<CustomAuthData, String> {
     handle_auth().await.map_err(|e| e.to_string())
 }
 
-async fn handle_auth() -> Result<CustomAuthData, Box<dyn std::error::Error>> {
-    let auth = Oauth::new("6a6bf548-5a82-41f5-9451-88b334cdc77f", None);
-    let window_url = auth.url();
 
-    let _ = open::that(window_url);
+async fn handle_auth() -> Result<CustomAuthData, Box<dyn std::error::Error + Send>> {
+    let (tx, rx) = mpsc::channel();
+    let handle = thread::spawn(move || {
+        tauri::async_runtime::block_on(async {
+            let auth = Oauth::new("6a6bf548-5a82-41f5-9451-88b334cdc77f", None);
+            let window_url = auth.url();
+        
+            let _ = open::that(window_url);
+        
+            let auth_info = auth.launch(false, "bAX8Q~biVLXbokLtT6ddhz_e8xm1WALle43XmbLh").await;
+            tx.send(auth_info).unwrap();
+        });
+    });
 
-    let auth_info = auth.launch(false, "bAX8Q~biVLXbokLtT6ddhz_e8xm1WALle43XmbLh").await?;
-
+    let auth_info = rx.recv().unwrap().map_err(|e| Box::new(e) as Box<dyn std::error::Error + Send>)?;
     Ok(auth_info)
 }
+
+
 #[tauri::command]
 async fn launch(version: String) -> Result<(), Error> {
     let clientversion = version.clone(); // This is the version you want to download
