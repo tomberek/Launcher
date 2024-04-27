@@ -1,2 +1,7 @@
 {
+    "cSpell.ignorePaths": [
+        "src/**/*",
+        "src-tauri/**/*",
+        "package.json"
+    ]
 }
