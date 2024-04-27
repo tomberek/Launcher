@@ -127,32 +127,35 @@ import PlayerCard from "../components/playercard.astro";
   import { invoke } from "@tauri-apps/api/core";
   import { Window } from "@tauri-apps/api/window";
   document.addEventListener("DOMContentLoaded", () => {
-    const appWindow = new Window("main");
-    function handle_auth() {
-      invoke("auth")
-        .then((data) => {
-          // Handle the response from the auth command
-          console.log(data);
-        })
-        .catch((e) => console.log(e));
-    }
-
-    function handle_close() {
-      appWindow.close();
-    }
-
-    const authButton = document.getElementById("microsoft-button");
-    const closeButton = document.getElementById("close");
-
-    if (authButton) {
-      authButton.addEventListener("click", handle_auth);
-    }
-
-    if (closeButton) {
-      closeButton.addEventListener("click", handle_close);
-    }
+     const appWindow = new Window("main");
+     function handle_auth(event: MouseEvent) {
+       if (event.target && (event.target as HTMLElement).id === "microsoft-button") {
+         invoke("auth")
+           .then((data) => {
+             console.log(data);
+           })
+           .catch((e) => console.log(e));
+       }
+     }
+ 
+     function handle_close(event: MouseEvent) {
+       if (event.target === closeButton) {
+         appWindow.close();
+       }
+     }
+ 
+     const authButton = document.getElementById("microsoft-button");
+     const closeButton = document.getElementById("close");
+ 
+     if (authButton) {
+       authButton.addEventListener("click", handle_auth);
+     }
+ 
+     if (closeButton) {
+       closeButton.addEventListener("click", handle_close);
+     }
   });
-</script>
+ </script>
 
 <style>
   .menu-button-container {
