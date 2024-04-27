@@ -128,14 +128,12 @@ import PlayerCard from "../components/playercard.astro";
   import { Window } from "@tauri-apps/api/window";
   document.addEventListener("DOMContentLoaded", () => {
      const appWindow = new Window("main");
-     function handle_auth(event: MouseEvent) {
-       if (event.target && (event.target as HTMLElement).id === "microsoft-button") {
+     function handle_auth() {
          invoke("auth")
            .then((data) => {
              console.log(data);
            })
            .catch((e) => console.log(e));
-       }
      }
  
      function handle_close(event: MouseEvent) {
