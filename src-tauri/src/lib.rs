@@ -1,30 +1,32 @@
-use std::{thread, sync::mpsc};
-
 use minecraft_essentials::{Oauth, CustomAuthData};
 use tauri::App;
 use tauri_plugin_http::{reqwest, Error};
+use tokio::sync::mpsc;
 
 #[tauri::command]
 async fn auth() -> Result<CustomAuthData, String> {
-    handle_auth().await.map_err(|e| e.to_string())
+    let (tx, mut rx) = mpsc::channel(1);
+    tauri::async_runtime::spawn(async move {
+        let result = handle_auth().await.map_err(|e| e.to_string());
+        let _ = tx.send(result).await; // Send the result back through the channel
+    });
+
+    // Receive the result from the channel
+    match rx.recv().await {
+        Some(result) => result, // Return the result from handle_auth
+        None => Err("No result received from handle_auth".to_string()), // Handle the case where no result is received
+    }
 }
 
 
-async fn handle_auth() -> Result<CustomAuthData, Box<dyn std::error::Error + Send>> {
-    let (tx, rx) = mpsc::channel();
-    let handle = thread::spawn(move || {
-        tauri::async_runtime::block_on(async {
-            let auth = Oauth::new("6a6bf548-5a82-41f5-9451-88b334cdc77f", None);
-            let window_url = auth.url();
-        
-            let _ = open::that(window_url);
-        
-            let auth_info = auth.launch(false, "bAX8Q~biVLXbokLtT6ddhz_e8xm1WALle43XmbLh").await;
-            tx.send(auth_info).unwrap();
-        });
-    });
+async fn handle_auth() -> Result<CustomAuthData, Box<dyn std::error::Error>> {
+    let auth = Oauth::new("6a6bf548-5a82-41f5-9451-88b334cdc77f", None);
+    let window_url = auth.url();
 
-    let auth_info = rx.recv().unwrap().map_err(|e| Box::new(e) as Box<dyn std::error::Error + Send>)?;
+    let _ = open::that(window_url);
+
+    let auth_info = auth.launch(false, "bAX8Q~biVLXbokLtT6ddhz_e8xm1WALle43XmbLh").await?;
+
     Ok(auth_info)
 }
 
@@ -77,11 +79,9 @@ impl AppBuilder {
     }
 
     pub fn run(self) {
-        let port = 8000;
         let setup = self.setup;
         tauri::Builder::default()
             .plugin(tauri_plugin_clipboard_manager::init())
-            .plugin(tauri_plugin_localhost::Builder::new(port).build())
             .plugin(tauri_plugin_http::init())
             .invoke_handler(tauri::generate_handler![auth, launch])
             .setup(move |app| {
