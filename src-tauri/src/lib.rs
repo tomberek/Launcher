@@ -1,5 +1,5 @@
 use minecraft_essentials::{Oauth, CustomAuthData};
-use tauri::App;
+use tauri::{App, Window};
 use tauri_plugin_http::{reqwest, Error};
 use tokio::sync::mpsc;
 
@@ -13,7 +13,10 @@ async fn auth() -> Result<CustomAuthData, String> {
 
     // Receive the result from the channel
     match rx.recv().await {
-        Some(result) => result, // Return the result from handle_auth
+        Some(result) => {
+            println!("{:?}", result);
+            result
+        }, // Return the result from handle_auth
         None => Err("No result received from handle_auth".to_string()), // Handle the case where no result is received
     }
 }
@@ -22,7 +25,6 @@ async fn auth() -> Result<CustomAuthData, String> {
 async fn handle_auth() -> Result<CustomAuthData, Box<dyn std::error::Error>> {
     let auth = Oauth::new("6a6bf548-5a82-41f5-9451-88b334cdc77f", None);
     let window_url = auth.url();
-
     let _ = open::that(window_url);
 
     let auth_info = auth.launch(false, "bAX8Q~biVLXbokLtT6ddhz_e8xm1WALle43XmbLh").await?;
