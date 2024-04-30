@@ -1,16 +1,16 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/layout.astro";
+import SettingsItem from "../components/settings-item.astro";
 ---
 
 <Layout
   title="Home | TeaClient"
   buttons={false}
-  titlebar={false}
+  
   mainclass="flex ml-5 w-full"
 >
-<div class="flex h-screen justify-center items-center align-middle m-auto">
- <h1 class="text-4xl font-jbm font-bold">This page is coming soon</h1>
+<div class="h-screen w-full">
+  <SettingsItem/>
 </div>
 </Layout>
 
