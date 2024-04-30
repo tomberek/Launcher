@@ -2051,8 +2051,9 @@ checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
 
 [[package]]
 name = "minecraft-essentials"
-version = "0.2.12"
-source = "git+https://github.com/minecraft-essentials/minecraft-essentials?branch=tauri-support#5df4991375e74d787fb4cfb3784c21b683d5924c"
+version = "0.2.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c1ede1d9d93b929972b594f243bfed661013a926d89acfac3e48c6590e8563d"
 dependencies = [
  "clap",
  "displaydoc",

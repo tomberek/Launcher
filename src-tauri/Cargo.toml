@@ -22,8 +22,8 @@ tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", 
 
 serde_json = "1.0.116"
 serde = "1.0.199"
-tokio = { version = "1.37", features = ["macros", "full"] }
-minecraft-essentials = { git = "https://github.com/minecraft-essentials/minecraft-essentials", features = ["tauri"], branch = "tauri-support"}
+tokio = { version = "1.37", features = ["full"] }
+minecraft-essentials = "0.2.11"
 open = "5.1.2"
 
 [features]
