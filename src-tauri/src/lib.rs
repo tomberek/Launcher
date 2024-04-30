@@ -8,16 +8,14 @@ async fn auth() -> Result<CustomAuthData, String> {
     let (tx, mut rx) = mpsc::channel(1);
     tauri::async_runtime::spawn(async move {
         let result = handle_auth().await.map_err(|e| e.to_string());
-        let _ = tx.send(result).await; // Send the result back through the channel
+        if let Err(e) = tx.send(result).await {
+            eprintln!("Failed to send auth result: {}", e);
+        }
     });
-
-    // Receive the result from the channel
     match rx.recv().await {
-        Some(result) => {
-            println!("{:?}", result);
-            result
-        }, // Return the result from handle_auth
-        None => Err("No result received from handle_auth".to_string()), // Handle the case where no result is received
+        Some(Ok(data)) => Ok(data),
+        Some(Err(e)) => Err(e.to_string()),
+        None => Err("No result received from handle_auth".to_string()),
     }
 }
 
