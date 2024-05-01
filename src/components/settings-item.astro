@@ -1,14 +1,23 @@
 ---
 import { Image } from "astro:assets";
+import { twMerge } from "tailwind-merge";
+interface Props {
+  name: string;
+  image: string;
+  override?: string;
+}
+
+
+const {name, image, override} = Astro.props;
 ---
 
 
 <div
-class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
+class={twMerge("bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]", override)}
 >
 <div class="flex items-center">
   <Image
-    src="https://s.namemc.com/i/c056a3f5d1217a32.png"
+    src={image}
     width="45"
     height="45"
     alt="Sharpie"
@@ -16,21 +25,7 @@ class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] r
     id="logo"
     class="rounded-md"
   />
-  <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
+  <h1 class="font-semibold text-sm ml-2">{name}</h1>
 </div>
-<div class="flex items-center justify-center">
-  <button class="p-2 bg-[#2C1E36] rounded-md">
-    <!-- Play Button  -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1.5em"
-      height="1.5em"
-      viewBox="0 0 24 24"
-      ><path
-        fill="currentColor"
-        d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
-      ></path></svg
-    >
-  </button>
-</div>
+  <slot/>
 </div>
