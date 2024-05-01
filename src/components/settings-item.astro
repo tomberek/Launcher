@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
 interface Props {
   name: string;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 
-const {name, image, override} = Astro.props;
+const {name, icon, override} = Astro.props;
 ---
 
 
@@ -16,15 +16,13 @@ const {name, image, override} = Astro.props;
 class={twMerge("bg-servers border border-servers-border p-2 transition-all mb-2 w-[90%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]", override)}
 >
 <div class="flex items-center">
-  <Image
-    src={image}
-    width="45"
-    height="45"
-    alt="Sharpie"
-    loading="lazy"
-    id="logo"
-    class="rounded-md"
-  />
+  <Icon
+  name={icon}
+  title={name}
+  size={46}
+  id="logo"
+  class="rounded-md"
+ />
   <h1 class="font-semibold text-sm ml-2">{name}</h1>
 </div>
   <slot/>
