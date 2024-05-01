@@ -66,7 +66,8 @@
                   darwin.libobjc
                   rustup
                 ]
-              );
+              )
+              ++ (with pkgs; [ cargo-tauri ]);
 
             # Define Enviroment Virables
             env = { };
