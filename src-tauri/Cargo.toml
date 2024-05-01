@@ -17,7 +17,7 @@ tauri-plugin-clipboard-manager = { git = "https://github.com/tauri-apps/plugins-
 tauri-plugin-http = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-dialog = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2"}
-tauri-plugin-fs ={ git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2"}
+tauri-plugin-fs = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2"}
 
 
 serde_json = "1.0.116"
