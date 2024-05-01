@@ -1,0 +1,21 @@
+{
+    "$schema": "../gen/schemas/desktop-schema.json",
+    "identifier": "default",
+    "description": "Capability for the main windows",
+    "windows": ["main"],
+    "permissions": [
+        {
+            "identifier": "http:default",
+            "allow": [
+              "https://api.mojang.com/users/profiles/minecraft/*",
+              "https://api.iconify.design/*"
+            ]
+        },
+        "window:allow-show",
+        "window:allow-hide",
+        "window:allow-close",
+        "window:allow-start-dragging",
+        "window:allow-set-decorations",
+        "app:allow-app-hide"
+    ]
+}
