@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  integrations: [tailwind(), icon()],
   vite: {
     clearScreen: false,
     server: {
@@ -22,5 +24,5 @@ export default defineConfig({
       // produce sourcemaps for debug builds
       sourcemap: !!process.env.TAURI_DEBUG
     }
-  },
+  }
 });
