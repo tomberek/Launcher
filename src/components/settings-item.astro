@@ -2,28 +2,28 @@
 import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
 interface Props {
-  name: string;
-  icon: string;
-  override?: string;
+ name: string;
+ icon?: string;
+ override?: string;
 }
-
 
 const {name, icon, override} = Astro.props;
 ---
 
-
 <div
-class={twMerge("bg-servers border border-servers-border p-2 transition-all mb-2 w-[90%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]", override)}
+ class={twMerge("bg-servers border border-servers-border p-2 transition-all mb-2 w-[90%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]", override)}
 >
-<div class="flex items-center">
-  <Icon
-  name={icon}
-  title={name}
-  size={46}
-  id="logo"
-  class="rounded-md"
- />
-  <h1 class="font-semibold text-sm ml-2">{name}</h1>
-</div>
-  <slot/>
+ <div class="flex items-center">
+    {icon && (
+      <Icon
+        name={icon}
+        title={name}
+        size={46}
+        id="logo"
+        class="rounded-md"
+      />
+    )}
+    <h1 class="font-semibold text-sm ml-2">{name}</h1>
+ </div>
+ <slot/>
 </div>
