@@ -5,6 +5,7 @@ import PlayerCard from "../components/playercard.astro";
 
 <section class="top-0 flex justify-between items-center bg-transparent">
   <div class="gap-3 flex items-center">
+    <!-- Title -->
     <a href="/" title="Home page" aria-label="Home page" class="ml-5">
       <Image
         src="/logo.webp"
@@ -22,6 +23,7 @@ import PlayerCard from "../components/playercard.astro";
   </div>
   <input id="menu-toggle" type="checkbox" class="hidden" />
   <label class="menu-button-container flex justify-center" for="menu-toggle">
+    <!-- Auth Button -->
     <div
       id="auth-button"
       class="menu-button flex align-middle justify-center right-[50%] absolute rounded-xl transition-colors hover:transition-colors bg-black/40 hover:bg-black/80 p-1 text-white"
@@ -41,6 +43,7 @@ import PlayerCard from "../components/playercard.astro";
   <ul
     class="menu h-screen max-h-screen z-10 top-0 right-[-30%] absolute bg-black pt-10 px-10"
   >
+    <!-- Accounts Section -->
     <h1 class="flex align-left pl-5 text-3xl font-bold">Accounts</h1>
     <li>
       <Image
