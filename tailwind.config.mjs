@@ -9,6 +9,9 @@ export default {
 		   'teaclient': '#281734',
 		   'servers-border': '#110C16'
 		 },
+		 backgroundImage: {
+		  'microsoft': "linear-gradient(to bottom left, #ef4444, #22c55e, #3b82f6, #eab308)",
+		}
 	   },
 	   fontFamily: {
 		jbm: ["JetBrains Mono", "monospace"]

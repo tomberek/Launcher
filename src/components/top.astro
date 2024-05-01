@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import PlayerCard from "../components/playercard.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="top-0 flex justify-between items-center bg-transparent">
@@ -81,19 +82,9 @@ import PlayerCard from "../components/playercard.astro";
     <li class="flex items-center align-middle justify-center">
       <button
         id="microsoft-button"
-        class="flex items-center transition-colors hover:transition-all hover:bg-gradient-to-r rounded-xl bg-teaclient p-1 from-red-500 to-red-600 text-white"
+        class="flex items-center transition-colors hover:transition-all rounded-sm w-60 px-2 hover:bg-microsoft bg-neutral-600 p-2 text-white"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="3.5em"
-          height="3.5em"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="currentColor"
-            d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13h-1v4.5h-3v1h3v3h1v-3h3v-1h-3z"
-          ></path>
-        </svg>
+      <Icon name="logos:microsoft-icon" size={40} />
         <span class="ml-2">Sign in with Microsoft</span>
       </button>
     </li>
