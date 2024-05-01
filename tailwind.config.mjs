@@ -10,7 +10,7 @@ export default {
 		   'servers-border': '#110C16'
 		 },
 		 backgroundImage: {
-		  'microsoft': "linear-gradient(to bottom left, #ef4444, #22c55e, #3b82f6, #eab308)",
+		  'microsoft': "linear-gradient(to bottom right, #ef4444, #22c55e, #3b82f6, #eab308)",
 		}
 	   },
 	   fontFamily: {
