@@ -16,6 +16,8 @@ tauri = { version = "2.0.0-beta", features = [ "macos-private-api"] }
 tauri-plugin-clipboard-manager = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-http = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
 tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2" }
+tauri-plugin-dialog = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2"}
+tauri-plugin-fs ={ git = "https://github.com/tauri-apps/plugins-workspace", branch = "v2"}
 
 
 serde_json = "1.0.116"
@@ -23,6 +25,7 @@ serde = "1.0.199"
 tokio = { version = "1.37", features = ["full"] }
 minecraft-essentials = "0.2.11"
 open = "5.1.2"
+
 
 [features]
 default = [ "custom-protocol" ]
