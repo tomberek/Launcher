@@ -136,10 +136,8 @@ import PlayerCard from "../components/playercard.astro";
            .catch((e) => console.log(e));
      }
  
-     function handle_close(event: MouseEvent) {
-       if (event.target === closeButton) {
+     function handle_close() {
          appWindow.close();
-       }
      }
  
      const authButton = document.getElementById("microsoft-button");
