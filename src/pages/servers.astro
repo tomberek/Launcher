@@ -1,9 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/layout.astro";
 
-interfax
-ce Server {
+interface Server {
  name: string;
  ip: string;
  description: string;
@@ -48,7 +46,6 @@ export function getServerInfo(serverName: string): Server | undefined {
 <Layout
   title="Home | TeaClient"
   buttons={false}
-  titlebar={false}
   mainclass="flex ml-5 w-full"
 >
 <div class="flex h-screen justify-center items-center align-middle m-auto">
