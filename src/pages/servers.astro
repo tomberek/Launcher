@@ -1,6 +1,48 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/layout.astro";
+
+interfax
+ce Server {
+ name: string;
+ ip: string;
+ description: string;
+ image: string;
+}
+
+interface ServerInfo {
+ dropps: Server;
+ hypixel: Server;
+}
+
+
+
+export function getServerInfo(serverName: string): Server | undefined {
+ const serverInfo: ServerInfo = {
+    dropps: {
+      name: "Dropps",
+      ip: "dropps.minehut.gg",
+      description: "A Minecraft Server for the Drops community.",
+      image: "/images/drops.png",
+    },
+    hypixel: {
+      name: "Hypixel",
+      ip: "mc.hypixel.net",
+      description: "The largest Minecraft server in the world, with a huge variety of games and minigames to play!",
+      image: "/images/hypixel.png"
+    }
+ };
+
+ // Check if the server name exists in the serverInfo object
+ if (serverName in serverInfo) {
+    return serverInfo[serverName as keyof ServerInfo];
+ }
+
+ // If the server name does not exist, return undefined
+ return undefined;
+}
+
+
 ---
 
 <Layout

@@ -1,18 +1,18 @@
 ---
 import Layout from "../layouts/layout.astro";
 import { Image } from "astro:assets";
-
-let servers = ["droops", "hypixel", "mineman"]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
-let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
+import { getServerInfo } from "./servers.astro";
+let servers = ["dropps", "hypixel", "mineman"]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
+let serverIP = ["dropps.minehut.gg", "mc.hypixel.net", "mineman.club" ]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT TO LOCALHOST
 ---
 
 <Layout
-  title="Home | TeaClient"
-  buttons={false}
-  launchbar={true}
-  mainclass="flex ml-5 w-full"
+ title="Home | TeaClient"
+ buttons={false}
+ launchbar={true}
+ mainclass="flex ml-5 w-full"
 >
-  <div class="mt-2 w-[80%]">
+ <div class="mt-2 w-[80%]">
     <!-- Welcome -->
     <div
       class="flex justify-between items-center w-[48%] my-10 bg-gradient-to-r rounded-xl from-violet-800 to-violet-600"
@@ -35,106 +35,49 @@ let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT
       </div>
     </div>
 
-    <!-- Servers  -->
-    <div
-      class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
-    >
-      <div class="flex items-center">
-        <Image
-          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
-          width="45"
-          height="45"
-          alt="Sharpie"
-          loading="lazy"
-          id="logo"
-          class="rounded-md"
-        />
-        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
-      </div>
-      <div class="flex items-center justify-center">
-        <button class="p-2 bg-[#2C1E36] rounded-md">
-          <!-- Play Button  -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-            ><path
-              fill="currentColor"
-              d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
-            ></path></svg
-          >
-        </button>
-      </div>
-    </div>
-    <div
-      class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
-    >
-      <div class="flex items-center">
-        <Image
-          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
-          width="45"
-          height="45"
-          alt="Sharpie"
-          loading="lazy"
-          id="logo"
-          class="rounded-md"
-        />
-        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
-      </div>
-      <div class="flex items-center justify-center">
-        <button class="p-2 bg-[#2C1E36] rounded-md">
-          <!-- Play Button  -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-            ><path
-              fill="currentColor"
-              d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
-            ></path></svg
-          >
-        </button>
-      </div>
-    </div>
+    <!-- Servers -->
 
-    <div
-      class="bg-servers border border-servers-border p-2 transition-all w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
-    >
-      <div class="flex items-center">
-        <Image
-          src="https://s.namemc.com/i/c056a3f5d1217a32.png"
-          width="45"
-          height="45"
-          alt="Sharpie"
-          loading="lazy"
-          id="logo"
-          class="rounded-md"
-        />
-        <h1 class="font-semibold text-sm ml-2">Sharpness</h1>
-      </div>
-      <div class="flex items-center justify-center">
-        <button class="p-2 bg-[#2C1E36] rounded-md">
-          <!-- Play Button  -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
+    {servers.map((server, index) => (
+      <div
+        class="bg-servers border border-servers-border p-2 transition-all mb-2 w-[48%] rounded-md flex justify-between hover:border-[#513d5e] hover:bg-[#32233d] hover:scale-[105%]"
+      >
+        <div class="flex items-center">
+          <Image
+            src={(getServerInfo(server)?.image || `https://eu.mc-api.net/v3/server/favicon/${serverIP[index]}`) as string}
+            width="45"
+            height="45"
+            alt={server}
+            loading="lazy"
+            id="logo"
+            class="rounded-md"
+          />
+          <h1 class="font-semibold text-sm ml-2">{server}</h1>
+        </div>
+        <div class="flex items-center justify-center">
+          <button class="p-2 bg-[#2C1E36] rounded-md">
+            <!-- Play Button -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1.5em"
+              height="1.5em"
+              viewBox="0 0 24 24"
             ><path
               fill="currentColor"
               d="M21.409 9.353a2.998 2.998 0 0 1 0 5.294L8.597 21.614C6.534 22.737 4 21.277 4 18.968V5.033c0-2.31 2.534-3.769 4.597-2.648z"
             ></path></svg
-          >
-        </button>
+            >
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
+
+    ))}
+
+
+ </div>
 </Layout>
 
 <style>
-  html {
+ html {
     @apply rounded-2xl bg-[#352244];
     background: linear-gradient(
       171deg,
@@ -143,7 +86,7 @@ let serverImg = [""]; //TODO: SERVER PAGE REQUIRED AND REMOVE THIS AND CHANGE IT
     );
     @apply bg-center bg-cover bg-no-repeat bg-fixed;
     overflow-y: visible;
-  }
+ }
 </style>
 
 <script>
@@ -155,43 +98,43 @@ window.onload = function () {
 
  // Define the type for the imageCache object
  interface ImageCache {
-    [key: string]: string;
+     [key: string]: string;
  }
 
  // Declare imageCache with the defined type
  const imageCache: ImageCache = {};
 
  function reload_elements(
-    usernameElement: HTMLSpanElement,
-    userimageElement: HTMLImageElement,
-    username: string
+     usernameElement: HTMLSpanElement,
+     userimageElement: HTMLImageElement,
+     username: string
  ) {
-    console.log("CALLED");
-    // Early return if usernameElement is not provided or username is empty
-    if (!usernameElement || !username) return;
+     console.log("CALLED");
+     // Early return if usernameElement is not provided or username is empty
+     if (!usernameElement || !username) return;
 
-    // Update username text content
-    usernameElement.textContent = username;
+     // Update username text content
+     usernameElement.textContent = username;
 
-    // Early return if userimageElement is not provided
-    if (!userimageElement) return;
+     // Early return if userimageElement is not provided
+     if (!userimageElement) return;
 
-    // If image is cached, update the image source
-    if (imageCache[username]) {
-      userimageElement.src = imageCache[username] || "";
-      return;
-    }
+     // If image is cached, update the image source
+     if (imageCache[username]) {
+       userimageElement.src = imageCache[username] || "";
+       return;
+     }
 
-    // Fetch the image if not cached
-    const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLowerCase()}`;
-    fetch(targetUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = URL.createObjectURL(blob);
-        imageCache[username] = url;
-        userimageElement.src = url;
-      })
-      .catch((error) => console.error("Error fetching user image:", error));
+     // Fetch the image if not cached
+     const targetUrl = `https://visage.surgeplay.com/bust/256/${username.toLowerCase()}`;
+     fetch(targetUrl)
+       .then((response) => response.blob())
+       .then((blob) => {
+         const url = URL.createObjectURL(blob);
+         imageCache[username] = url;
+         userimageElement.src = url;
+       })
+       .catch((error) => console.error("Error fetching user image:", error));
  }
 
  // Correctly call the function with the retrieved username and elements
@@ -199,8 +142,8 @@ window.onload = function () {
 
  // Set up an interval to periodically reload elements
  setInterval(
-    () => reload_elements(usernameElement, userimageElement, username),
-    3000
+     () => reload_elements(usernameElement, userimageElement, username),
+     3000
  );
 };
 </script>
