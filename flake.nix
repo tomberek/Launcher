@@ -41,6 +41,14 @@
           ...
         }:
         {
+
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ (final: prev: { cargo-tauri = final.callPackage ./nix/cargo-tauri.nix { }; }) ];
+            config = { };
+          };
+          packages.default = pkgs.callPackage ./nix/deafult.nix { };
+
           devenv.shells.default = {
             name = "Project Name"; # TODO: Change Project Name
             difftastic.enable = true;
@@ -65,6 +73,20 @@
                   llvmPackages.libcxxClang
                   darwin.libobjc
                   rustup
+                ]
+              )
+              ++ lib.optionals pkgs.stdenv.isLinux (
+                with pkgs;
+                [
+                  glib
+                  cairo
+                  gdk-pixbuf
+                  atk
+                  pango
+                  gtk3
+                  openssl
+                  libsoup_3
+                  webkitgtk_4_1
                 ]
               )
               ++ (with pkgs; [ cargo-tauri ]);

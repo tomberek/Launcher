@@ -1,58 +1,70 @@
 {
   lib,
-  stdenv,
-  rustPlatform,
   fetchFromGitHub,
+  buildNpmPackage,
   openssl,
   pkg-config,
-  glibc,
-  libsoup,
-  cairo,
+  freetype,
+  libsoup_3,
   gtk3,
-  webkitgtk,
-  darwin,
-  pkgs,
+  webkitgtk_4_1,
+  nodejs-slim,
+  cargo-tauri,
+  cargo,
+  rustPlatform,
+  rustc,
+  bun,
 }:
 
-let
-  inherit (darwin.apple_sdk.frameworks) CoreServices Security SystemConfiguration;
-in
-rustPlatform.buildRustPackage rec {
-  pname = "TeaClient";
-  version = "0.1.0-beta";
+buildNpmPackage rec {
 
-  src = fetchFromGitHub {
-    owner = "TeaClientMC";
-    repo = "launcher";
-    rev = version;
-    hash = lib.misc.fakeHash;
+  pname = "TeaLauncherMC";
+  version = "0.0.1-dev";
+
+  src = ./..;
+
+  npmDepsHash = "sha256-dSNAfRntOemtEl/b0zcu22nfGjE6KMHJuh5zYiR79fE=";
+
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = src + "/src-tauri/Cargo.lock";
+    outputHashes = {
+      # "fix-path-env-0.0.0" = "sha256-kSpWO2qMotpsYKJokqUWCUzGGmNOazaREDLjke4/CtE=";
+      "tauri-plugin-clipboard-manager-2.1.0-beta.1" = "sha256-2F+OkX92B2/aJva86orotHc7mYUZuaYAmKx50dDp2Sc=";
+    };
   };
 
-  # Manually specify the sourceRoot since this crate depends on other crates in the workspace. Relevant info at
-  # https://discourse.nixos.org/t/difficulty-using-buildrustpackage-with-a-src-containing-multiple-cargo-workspaces/10202
-  # sourceRoot = "";
+  configurePhase = ''
+    export HOME=$(mktemp -d)
+  '';
 
-  nativeBuildInputs = [ pkg-config ];
+  preBuild = ''
+    cargo tauri build -b deb
+  '';
 
-  buildInputs =
-    [
-      openssl
-      pkgs.bun
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      glibc
-      libsoup
-      cairo
-      gtk3
-      webkitgtk
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Security
-      SystemConfiguration
-    ];
+  cargoRoot = "src-tauri/";
 
-  strictDeps = true;
+  preInstall = ''
+    mv src-tauri/target/release/bundle/deb/*/data/usr/ "$out"
+  '';
+
+  nativeBuildInputs = [
+    pkg-config
+    rustPlatform.cargoSetupHook
+    cargo
+    rustc
+    cargo-tauri
+    nodejs-slim
+    openssl
+    bun
+  ];
+
+  buildInputs = [
+    openssl
+    freetype
+    libsoup_3
+    gtk3
+    webkitgtk_4_1
+  ];
 
   meta = {
     description = "A Nice Opensourced Client.";
